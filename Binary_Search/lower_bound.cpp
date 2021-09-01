@@ -22,5 +22,6 @@ int main(void) {
 	//배열 OR 벡터는 오름차순이여야함
 	cout << lower_bound(arr, arr + 5, 5) - arr << '\n';
 	cout << lower_bound(v.begin(), v.end(), 5) - v.begin() << '\n';
+	cout << lower_binary(arr,4,0,4); << '\n';
 	return 0;
 }
