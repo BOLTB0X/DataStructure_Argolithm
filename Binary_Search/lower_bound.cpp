@@ -3,11 +3,23 @@
 #include <algorithm>
 using namespace std;
 
+// ì°¾ê³ ì í•˜ëŠ” ê°’ ì´ìƒì´ ì²˜ìŒ ë‚˜íƒ€ë‚˜ëŠ” ìœ„ì¹˜
+int lower_binary(int* arr, int target, int start, int end) {
+	while (start < end) {
+		int mid = (start + end) / 2;
+		if (arr[mid] >= target)
+			end = mid;
+		else
+			start = mid + 1;
+	}
+	return end;
+}
+
 int main(void) {
 	int arr[5] = { 1,2,3,4,5 };
 	vector<int> v = { 1,2,3,4,5,5,5 };
-	//Ã£À¸·Á´Â key°ªº¸´Ù °°°Å³ª Å« ¼ıÀÚ°¡ ¹è¿­¿¡ ¸î¹øÂ°(idx)¿¡¼­ Ã³À½ µîÀåÇÏ´Â Áö
-	//¹è¿­ OR º¤ÅÍ´Â ¿À¸§Â÷¼øÀÌ¿©¾ßÇÔ
+	//ì°¾ìœ¼ë ¤ëŠ” keyê°’ë³´ë‹¤ ê°™ê±°ë‚˜ í° ìˆ«ìê°€ ë°°ì—´ì— ëª‡ë²ˆì§¸(idx)ì—ì„œ ì²˜ìŒ ë“±ì¥í•˜ëŠ” ì§€
+	//ë°°ì—´ OR ë²¡í„°ëŠ” ì˜¤ë¦„ì°¨ìˆœì´ì—¬ì•¼í•¨
 	cout << lower_bound(arr, arr + 5, 5) - arr << '\n';
 	cout << lower_bound(v.begin(), v.end(), 5) - v.begin() << '\n';
 	return 0;
