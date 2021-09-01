@@ -3,12 +3,25 @@
 #include <algorithm>
 using namespace std;
 
+// ì°¾ê³ ì í•˜ëŠ” ê°’ë³´ë‹¤ í° ê°’ì´ ì²˜ìŒìœ¼ë¡œ ë‚˜íƒ€ë‚˜ëŠ” ìœ„ì¹˜
+int upper_binary(int* arr, int target, int start, int end) {
+	while (start < end) {
+		int mid = (start + end) / 2;
+		if (arr[mid] > target)
+			end = mid;
+		else
+			start = mid + 1;
+	}
+	return end;
+}
+
 int main(void) {
 	int arr[5] = { 1,2,3,4,5 };
 	vector<int> v = { 1,2,3,4,5,5,5 };
-	//Ã£À¸·Á´Â key°ªÀ» ÃÊ°úÇÏ´Â ¼ıÀÚ°¡ ¹è¿­¿¡ ¸î¹øÂ°(idx)¿¡¼­ Ã³À½ µîÀåÇÏ´Â Áö
-	//¹è¿­ OR º¤ÅÍ´Â ¿À¸§Â÷¼øÀÌ¿©¾ßÇÔ
+	//ì°¾ìœ¼ë ¤ëŠ” keyê°’ì„ ì´ˆê³¼í•˜ëŠ” ìˆ«ìê°€ ë°°ì—´ì— ëª‡ë²ˆì§¸(idx)ì—ì„œ ì²˜ìŒ ë“±ì¥í•˜ëŠ” ì§€
+	//ë°°ì—´ OR ë²¡í„°ëŠ” ì˜¤ë¦„ì°¨ìˆœì´ì—¬ì•¼í•¨
 	cout << upper_bound(arr, arr + 5, 3) - arr << '\n';
 	cout << upper_bound(v.begin(), v.end(), 3) - v.begin() << '\n';
+	cout << upper_binary(arr,3,0,4) << '\n;
 	return 0;
 }
