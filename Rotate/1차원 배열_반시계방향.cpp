@@ -5,6 +5,7 @@ using namespace std;
 
 int arr[10] = { 1,2,3,4,5,6,7,8,9,10 };
 
+//ì¶œë ¥
 void print_arr(void) {
 	for (int x = 0; x < 10; x++) {
 		cout << arr[x] << ' ';
@@ -14,7 +15,8 @@ void print_arr(void) {
 
 int main(void) {
 	print_arr();
-	//¹Ý½Ã°è¹æÇâÀ¸·Î n¸¸Å­ ÀÌµ¿
+	//ë¼ì´ë¸ŒëŸ¬ì´ ì´ìš©
+	//ë°˜ì‹œê³„ë°©í–¥ìœ¼ë¡œ në§Œí¼ ì´ë™
 	rotate(arr, arr + 1, arr + 10);
 	print_arr();
 	//2 3 4 5 6 7 8 9 10 1
