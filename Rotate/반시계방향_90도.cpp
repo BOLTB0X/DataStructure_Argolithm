@@ -5,10 +5,11 @@ using namespace std;
 int arr[3][3] = { {1,2,3},{4,5,6},{7,8,9} };
 int c_arr[3][3];
 
-//¹İ½Ã°è ¹æÇâ 90µµ È¸Àü
+//ë°˜ì‹œê³„ 90ë„ì”© íšŒì „
 void c_rotate(int n) {
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < n; j++) {
+			//ì‹œê³„ë‘ ë°˜ëŒ€ë¡œ
 			c_arr[i][j] = arr[j][n - 1 - i];
 		}
 	}
@@ -20,6 +21,7 @@ void c_rotate(int n) {
 	return;
 }
 
+//ì¶œë ¥
 void print_arr(void) {
 	for (int y = 0; y < 3; y++) {
 		for (int x = 0; x < 3; x++) {
