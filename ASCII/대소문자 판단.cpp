@@ -16,6 +16,7 @@ void encode(char ch)
     }
     return;
 }
+
 int main(void) {
     char ch = 'a';
     encode(ch);
