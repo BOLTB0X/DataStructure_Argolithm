@@ -11,11 +11,13 @@ void DFS(vector<vector<int>> &adj, int startNode) {
 	visited[startNode] = true;
 
 	//기존 인접그래프 방식으로
+	//계속 진행
 	for (int i = 0; i < adj[startNode].size(); i++) {
 		int next = adj[startNode][i];
 		if (!visited[next])
 			DFS(adj, next);
 	}
+	//현재 스타트노드 삽입
 	topo.push(startNode);
 }
 
@@ -27,6 +29,8 @@ int main() {
 
 	int N, M, A, B;
 	cin >> N >> M;
+	
+	//인접그래프 생성
 	vector<vector<int>> adj(N + 1);
 
 	//인접그래프 생성
