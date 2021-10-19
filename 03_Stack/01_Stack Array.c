@@ -5,25 +5,25 @@
 int stack[SIZE];
 int top = -1;
 
-void push(int data) {
+void push(int data) { 
 	if (top == SIZE - 1) {
-		printf("½ºÅÃ ¿À¹öÇÃ·Î¿ì°¡ ¹ß»ı\n");
+		printf("ìŠ¤íƒ ì˜¤ë²„í”Œë¡œìš°ê°€ ë°œìƒ\n");
 		return;
 	}
 	stack[++top] = data;
 }
 
 void show() {
-	printf("--- ½ºÅÃÀÇ ÃÖ»ó´Ü ---\n");
+	printf("--- ìŠ¤íƒì˜ ìµœìƒë‹¨ ---\n");
 	for (int i = top; i >= 0; i--) {
 		printf("%d\n", stack[i]);
 	}
-	printf("--- ½ºÅÃÀÇ ÃÖÇÏ´Ü ---\n");
+	printf("--- ìŠ¤íƒì˜ ìµœí•˜ë‹¨ ---\n");
 }
 
 int pop() {
 	if (top == -1) {
-		printf("½ºÅÃ ¾ğ´õÇÃ·Î¿ì ¹ß»ı\n");
+		printf("ìŠ¤íƒ ì–¸ë”í”Œë¡œìš° ë°œìƒ\n");
 		return -INF;
 	}
 	return stack[top--];
