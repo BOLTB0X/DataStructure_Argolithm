@@ -19,6 +19,7 @@ void DFS(int idx,int depth) {
 		cout << '\n';
 		return;
 	}
+	//ì¤‘ë³µí—ˆìš©
 	for (int i = idx; i < 5; i++) {
 		visited[i] = true;
 		com[depth] = arr[i];
@@ -28,6 +29,6 @@ void DFS(int idx,int depth) {
 }
 
 int main(void) {
-	//DFS·Î ¼ø¿­
+	//DFSí˜¸ì¶œ
 	DFS(0,0);
 }
