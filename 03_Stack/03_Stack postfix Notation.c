@@ -12,7 +12,7 @@ typedef struct {
 typedef struct {
 	Node *top;
 } Stack;
-//½ºÅÃ ±¸Çö
+//ìŠ¤íƒ êµ¬í˜„
 void push(Stack *stack, char *data) {
 	Node *node = (Node*)malloc(sizeof(Node));
 	strcpy(node->data, data);
@@ -27,7 +27,7 @@ char* getTop(Stack* stack) {
 
 char* pop(Stack* stack) {
 	if (stack->top == NULL) {
-		printf("½ºÅÃ ¾ð´õÇÃ·Î¿ì¹ß»ý\n");
+		printf("ìŠ¤íƒ ì–¸ë”í”Œë¡œìš°ë°œìƒ\n");
 		return -INF;
 	}
 	Node* node = stack->top;
@@ -37,10 +37,10 @@ char* pop(Stack* stack) {
 	free(node);
 	return data;
 }
-//¿©±â±îÁö ½ºÅÃ Á¤ÀÇ
+//ì—¬ê¸°ê¹Œì§€ ìŠ¤íƒ ì •ì˜
 
-//ÈÄÀ§ Ç¥±â¹ýÀ¸·Î º¯È¯
-//¿ì¼±¼øÀ§ ÇÔ¼ö¸¸µé±â
+//í›„ìœ„ í‘œê¸°ë²•ìœ¼ë¡œ ë³€í™˜
+//ìš°ì„ ìˆœìœ„ í•¨ìˆ˜ë§Œë“¤ê¸°
 int getPriority(char* i) {
 	if (!strcmp(i, "(")) return 0;
 	if (!strcmp(i, "+") || strcmp(i,"-")) return 1;
@@ -74,7 +74,7 @@ char* transition(Stack* stack, char** s, int size) {
 	return res;
 }
 
-//ÈÄÀ§Ç¥±â¹ý °è»ê
+//í›„ìœ„í‘œê¸°ë²• ê³„ì‚° 
 // 35+ ====> "3" "5" "+"
 void calculate(Stack* stack, char** s, int size) {
 	int x, y, z;
@@ -105,7 +105,7 @@ int main(void) {
 	for (int i = 0; i < strlen(a); i++) {
 		if (a[i] == ' ') size++;
 	}
-	char* ptr = strtok(a, " "); //ºÐ¸®
+	char* ptr = strtok(a, " "); //ë¶„ë¦¬
 	char** input = (char**)malloc(sizeof(char*) * size);
 	for (int i = 0; i < size; i++) {
 		input[i] = (char*)malloc(sizeof(char) * 100);
@@ -116,10 +116,10 @@ int main(void) {
 	}
 	char b[1000] = "";
 	strcpy(b, transition(&stack, input, size));
-	printf("ÈÄÀ§ Ç¥±â¹ý: %s\n", b);
+	printf("í›„ìœ„ í‘œê¸°ë²•: %s\n", b);
 	
 	size = 1;
-	for (int i = 0; i < strlen(b) - 1; i++) { //¸¶Áö¸·Àº Ç×»ó °ø¹éÀÌ µé¾î°¡¹Ç·Î 1À» •û±â
+	for (int i = 0; i < strlen(b) - 1; i++) { //ë§ˆì§€ë§‰ì€ í•­ìƒ ê³µë°±ì´ ë“¤ì–´ê°€ë¯€ë¡œ 1ì„ Â•å…®
 		if (b[i] == ' ') size++;
 	}
 	char* ptr2 = strtok(b, " ");
