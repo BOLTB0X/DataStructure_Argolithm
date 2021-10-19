@@ -21,7 +21,7 @@ void push(Stack* stack, int data) {
 
 int pop(Stack* stack) {
 	if (stack->top == NULL) {
-		printf("½ºÅÃ ¾ğ´õÇÃ·Î¿ì ¹ß»ı\n");
+		printf("ìŠ¤íƒ ì–¸ë”í”Œë¡œìš° ë°œìƒ\n");
 		return -INF;
 	}
 	Node* node = stack->top;
@@ -31,14 +31,14 @@ int pop(Stack* stack) {
 	return data;
 }
 
-void show(Stack* stack) {
+void show(Stack* stack) { 
 	Node* cur = stack->top;
-	printf("--- ½ºÅÃÀÇ ÃÖ»ó´Ü --\n");
+	printf("--- ìŠ¤íƒì˜ ìµœìƒë‹¨ --\n");
 	while (cur!=NULL){
 		printf("%d\n", cur->data);
 		cur = cur->next;
 	}
-	printf("--- ½ºÅÃÀÇ ÃÖÇÏ´Ü ---\n");
+	printf("--- ìŠ¤íƒì˜ ìµœí•˜ë‹¨ ---\n");
 }
 
 int main(void) {
