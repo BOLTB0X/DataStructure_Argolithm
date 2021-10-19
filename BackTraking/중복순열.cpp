@@ -11,12 +11,14 @@ void print_arr(void) {
 	}
 	return;
 }
+
 void DFS(int depth) {
 	if (depth == 2) {
 		print_arr();
 		cout << '\n';
 		return;
 	}
+	//중복허용
 	for (int i = 0; i < 5; i++) {
 		visited[i] = true;
 		per[depth] = arr[i];
