@@ -19,16 +19,16 @@ void DFS(int idx, int depth) {
 		return;
 	}
 	for (int i = idx; i < 5; i++) {
-		if (!visited[i]) {
-			visited[i] = true;
-			com[depth] = arr[i];
-			DFS(i + 1, depth + 1);
-			visited[i] = false;
-		}
+		if (visited[i]) 
+			continue;
+		visited[i] = true;
+		com[depth] = arr[i];
+		DFS(i + 1, depth + 1);
+		visited[i] = false;
 	}
 }
 
 int main(void) {
-	//DFS·Î ¼ø¿­
+	//DFSÂ·ÃŽ Â¼Ã¸Â¿Â­
 	DFS(0, 0);
 }
