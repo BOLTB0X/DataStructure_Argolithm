@@ -13,9 +13,11 @@ int swap(int *a,int *b){
 int main(void) {
 	int n, min, index;
 	scanf("%d", &n);
-	for (int i = 0; i < n; i++) scanf("%d", &arr[i]);
+	for (int i = 0; i < n; i++) 
+		scanf("%d", &arr[i]);
 	for (int i = 0; i < n; i++) {
-		min = INT_MAX; //Á¦ÀÏ Å«°ªÀ¸·Î ÃÊ±âÈ­
+		//ìµœëŒ“ê°’ìœ¼ë¡œ ì…‹íŒ…
+		min = INT_MAX; 
 		for (int j = i; j < n; j++) {
 			if (min > arr[j]) {
 				min = arr[j];
