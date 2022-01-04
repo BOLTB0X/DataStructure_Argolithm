@@ -1,10 +1,14 @@
 #include <iostream> 
 #include <string>
+
 using namespace std;
-//°ø¹éÀ» Æ÷ÇÔÇÏ¿© ÇÑ ÁÙÀ» ¸ğµÎ ¹®ÀÚ¿­ ÇüÅÂ·Î ÀÔ·Â¹Ş°íÀÚ ÇÑ´Ù¸é
-//getline()ÇÔ¼ö ÀÌ¿ë
+
+//ê³µë°±ì„ í¬í•¨í•˜ì—¬ í•œ ì¤„ì„ ëª¨ë‘ ë¬¸ìì—´ í˜•íƒœë¡œ ì…ë ¥ë°›ê³ ì í•œë‹¤ë©´
+//getline()í•¨ìˆ˜ ì´ìš©
+
 int main(void) {
 	string input;
+	
 	getline(cin, input);
 	for (int i = 0; i < input.size(); i++) {
 		cout << input[i] << '\n';
