@@ -3,8 +3,7 @@
 using namespace std;
 
 //범위이용
-void encode(char ch)
-{
+void encode(char ch) {
     if ('a' <= ch && ch <= 'z') {
         cout << "소문자이며, 아스키 코드값은 " << ch << " 입니다. \n";
     }
