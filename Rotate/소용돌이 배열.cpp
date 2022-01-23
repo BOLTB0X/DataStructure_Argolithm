@@ -14,21 +14,25 @@ void rotate(int n) {
     int x = 0, y = 0; 
 
     while (cnt <= n * n) {
+	//우
         for (x = column_l; x <= column_r && cnt <= n * n; x++) 
             arr[y][x] = cnt++;
         x--;
         row_u++;
-
+	
+	//하
         for (y = row_u; y <= row_d && cnt <= n * n; y++) 
             arr[y][x] = cnt++;
         y--;
         column_r--;
-
+	
+	//좌
         for (x = column_r; x >= column_l && cnt <= n * n; x--) 
             arr[y][x] = cnt++;
         x++;
         row_d--;
-
+	
+	//상
         for (y = row_d; y >= row_u && cnt <= n * n; y--) 
             arr[y][x] = cnt++;
         y++;
