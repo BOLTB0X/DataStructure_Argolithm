@@ -5,12 +5,12 @@ using namespace std;
 int arr[1000][1000] = { 0, }; 
 
 void rotate(int n) {
-    int cnt = 1; // �ʱⰪ�� 1��.. 
+    int cnt = 1; 
 
-    int column_l = 0;  
-    int column_r = n - 1; 
-    int row_u = 0; 
-    int row_d = n - 1; 
+    int column_l = 0;  //열 왼쪽
+    int column_r = n - 1; //행 오른쪽
+    int row_u = 0;  // 행 위
+    int row_d = n - 1;  // 행 아래
     int x = 0, y = 0; 
 
     while (cnt <= n * n) {
