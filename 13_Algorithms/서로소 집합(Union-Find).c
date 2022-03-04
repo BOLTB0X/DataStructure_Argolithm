@@ -1,13 +1,14 @@
 #include <stdio.h>
+//ê·¸ë˜í”„ ë‚´ ì‹¸ì´í´ êµ¬í• ë•Œ ìš©ì´
 
-//Àç±Í·Î ÁıÇÕ Ã£±â
+//ì¬ê·€ë¡œ ì§‘í•© ì°¾ê¸°
 int get_Set(int set[], int x) {
 	if (set[x] == x)
 		return x;
 	return set[x] = get_Set(set, set[x]);
 }
 
-//µÎ ÁıÇÕ ÇÕÄ¡±â
+//ë‘ ì§‘í•© í•©ì¹˜ê¸°
 void union_Set(int set[], int a, int b) {
 	a = get_Set(set, a);
 	b = get_Set(set, b);
@@ -19,10 +20,11 @@ void union_Set(int set[], int a, int b) {
 	return;
 }
 
-//µ¿ÀÏÇÑ ÁıÇÕ ³»¿¡ ÀÖ´ÂÁö È®ÀÎ
+//ë™ì¼í•œ ì§‘í•© ë‚´ì— ìˆëŠ”ì§€ í™•ì¸
 int find_data_in_Set(int set[], int a, int b) {
 	a = get_Set(set, a);
 	b = get_Set(set, b);
+	
 	if (a == b)
 		return 1;
 	return 0;
@@ -34,24 +36,24 @@ int main(void) {
 	for (int i = 0; i < 7; ++i)
 		set[i] = i;
 
-	printf("¿ø¼Ò 1,2,3\n");
-	printf("¿¬°á : ¿ø¼Ò 4,5,6\n");
+	printf("ì›ì†Œ 1,2,3\n");
+	printf("ì—°ê²° : ì›ì†Œ 4,5,6\n");
 
 	union_Set(set, 1, 2);
 	union_Set(set, 2, 3);
 	union_Set(set, 4, 5);
 	union_Set(set, 5, 6);
 
-	printf("1 -> 4 °°Àº ÁıÇÕ? : %d\n", find_data_in_Set(set, 1, 4));
-	printf("¿ø¼Ò 6ÀÌ ¼ÓÇÑ ÁıÇÕ? : %d\n", get_Set(set, 6));
+	printf("1 -> 4 ê°™ì€ ì§‘í•©? : %d\n", find_data_in_Set(set, 1, 4));
+	printf("ì›ì†Œ 6ì´ ì†í•œ ì§‘í•©? : %d\n", get_Set(set, 6));
 
 	printf("===============================\n");
 	
-	printf("1°ú 4 ¿¬°á\n");
+	printf("1ê³¼ 4 ì—°ê²°\n");
 	union_Set(set, 1, 4);
 
-	printf("1 -> 4 °°Àº ÁıÇÕ? : %d\n", find_data_in_Set(set, 1, 4));
-	printf("¿ø¼Ò 6ÀÌ ¼ÓÇÑ ÁıÇÕ? : %d\n", get_Set(set, 6));
+	printf("1 -> 4 ê°™ì€ ì§‘í•©? : %d\n", find_data_in_Set(set, 1, 4));
+	printf("ì›ì†Œ 6ì´ ì†í•œ ì§‘í•©? : %d\n", get_Set(set, 6));
 
 	return 0;
 }
