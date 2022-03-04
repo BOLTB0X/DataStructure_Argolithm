@@ -1,21 +1,23 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 
+//ì´ë¶„íƒìƒ‰ ì‘ìš©
 int lower_bound(int* arr, int size, int target) {
 	int start, mid, end;
 	start = 0, end = size - 1;
 
-	// end°¡ startº¸´Ù °°°Å³ª ÀÛ¾ÆÁö¸é, 
-	// ±× °ªÀÌ Upper BoundÀÌ¹Ç·Î ¹İº¹À» Á¾·á
+	// endê°€ startë³´ë‹¤ ê°™ê±°ë‚˜ ì‘ì•„ì§€ë©´, 
+	// ê·¸ ê°’ì´ Upper Boundì´ë¯€ë¡œ ë°˜ë³µì„ ì¢…ë£Œ
 	while (start < end) {
 		mid = (start + end) / 2;
-		//Å¸°ÙÀÌ Áß°£°ª º¸´Ù ÀÛ°Å³ª °°´Ù¸é
+		
+		//íƒ€ê²Ÿì´ ì¤‘ê°„ê°’ ë³´ë‹¤ ì‘ê±°ë‚˜ ê°™ë‹¤ë©´
 		if (arr[mid] >= target)
 			end = mid;
-		//Å¸°ÙÀÌ Áß°£°ªº¸´Ù Å©´Ù¸é
-		else if (arr[mid] < target) {
-			start = mid + 1;
-		}
+		
+		//íƒ€ê²Ÿì´ ì¤‘ê°„ê°’ë³´ë‹¤ í¬ë‹¤ë©´
+		else if (arr[mid] < target) 
+			start = mid + 1; //ì¤‘ì•™ê°’ +1 
 	}
 	return end;
 }
@@ -23,7 +25,8 @@ int lower_bound(int* arr, int size, int target) {
 int main(void) {
 	int arr[10] = { 1,3,4,5,7,9,10,11,12,15 };
 	int arr_size = 10;
-
-	printf("3ÀÌ»ó µÇ´Â index: %d\n", lower_bound(arr, arr_size, 3));
+	
+	//íŠ¹ì • ê°’ ì´ìƒì´ ë˜ëŠ” ì²«ë²ˆì§¸ ì¸ë±ìŠ¤ë¥¼ êµ¬í•´ì•¼í•  ë•Œ lower_bound ì´ìš©
+	printf("3ì´ìƒ ë˜ëŠ” index: %d\n", lower_bound(arr, arr_size, 3));
 	return 0;
 }
