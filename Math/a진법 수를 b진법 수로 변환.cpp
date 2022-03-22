@@ -10,7 +10,7 @@ int tran_dec(string number, int a) {
 	
 	for (int i = size - 1, j = 1; i >= 0; ++i, j *= a) {
 		if (number[i] >= 'A')
-			number[i] = '9' + (number[i] - 'A') + 1;
+			number[i] = '9' + (number[i] - 'A') + 1; // 16진수 
 		tot += j * (number[i] - '0');
 	}
 	
@@ -30,12 +30,4 @@ string trans_b(int number, int b) {
 	reverse(n.begin(), n.end());
 
 	return n;
-}
-
-int main(void) {
-	int number = 124334;
-
-
-
-	return 0;
 }
