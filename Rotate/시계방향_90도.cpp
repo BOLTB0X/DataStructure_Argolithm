@@ -13,7 +13,6 @@ void f_rotate(int n) {
 			c_arr[i][j] = arr[n - 1 - j][i];
 		}
 	}
-	
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < n; j++) {
 			arr[i][j] = c_arr[i][j];
@@ -34,6 +33,7 @@ void print_arr(void) {
 int main(void) {
 	print_arr();
 	cout << '\n';
+	
 	f_rotate(3);
 	print_arr();
 	cout << '\n';
