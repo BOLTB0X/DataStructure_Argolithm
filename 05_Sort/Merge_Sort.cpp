@@ -7,7 +7,7 @@ int n;
 vector<int> v(1000001, 0);
 int *tmp_v;
 
-//º´ÇÕÇÏ¸ç Á¤·Ä 
+// ë³‘í•©í•˜ë©° ì •ë ¬ 
 void merge(int left, int right) {
 	int mid = (left + right) / 2;
 	
@@ -39,7 +39,7 @@ void merge(int left, int right) {
 	return;
 }
 
-// ºĞÇÒÀ» Àç±ÍÀûÀ¸·Î È£Ãâ
+// ë¶„í• ì„ ì¬ê·€ì ìœ¼ë¡œ í˜¸ì¶œ
 void partition(int left, int right) {
 	int mid;
 	
