@@ -1,69 +1,62 @@
 #include <iostream>
-#include <vector>
 
-using namespace std;
+using namespace std;;
 
-int n;
-vector<int> v(1000001, 0);
-int *tmp_v;
+void merge(int n, int* arr, int start, int end) {
+	int* sorted = new int[n]; // 임시
 
-// 병합하며 정렬 
-void merge(int left, int right) {
-	int mid = (left + right) / 2;
-	
-	int i = left;
-	int j = mid + 1;
-	int k = left;
-	
-	while(i <= mid && j <= right) {
-		if (v[i] <= v[j])
-			tmp_v[k++] = v[i++];
+	int mid = (start + end) / 2;
+	int i = start, j = mid + 1, k = start;
+
+	while (i <= mid && j <= end) {
+		if (arr[i] < arr[j])
+			sorted[k++] = arr[i++];
 		else
-			tmp_v[k++] = v[j++];	
-	} 
-	
-	if(i > mid) { 
-		for(int t = j; t<= right; t++) 
-			tmp_v[k++] = v[t]; 
-	}
-	
-	else { 
-		for(int t = i; t <=right; t++) 
-			tmp_v[k++] = v[t];
+			sorted[k++] = arr[j++];
 	}
 
+	if (i > mid) {
+		for (int a = j; a <= end; ++a)
+			sorted[k++] = arr[a];
+	}
 
-	for (int i = left; i <= right; ++i)
-		v[i] = tmp_v[i];
-		
+	else {
+		for (int a = i; a <= mid; ++a)
+			sorted[k++] = arr[a];
+	}
+
+	for (int a = start; a <= end; ++a)
+		arr[a] = sorted[a];
+
+	delete[] sorted;
 	return;
 }
 
-// 분할을 재귀적으로 호출
-void partition(int left, int right) {
-	int mid;
-	
-	if (left < right) {
-		mid = (left + right) / 2;
-		partition(left, mid);
-		partition(mid + 1, right);
-		merge(left, right);
+void merge_Sort(int n, int* arr, int start, int end) {
+	if (start < end) {
+		int mid = (start + end) / 2;
+		merge_Sort(n, arr, start, mid);
+		merge_Sort(n, arr, mid + 1, end);
+		merge(n, arr, start, end);
 	}
-	
 	return;
 }
 
 int main(void) {
+	int n;
+	int* arr;
+
 	cin >> n;
-	
-	tmp_v = new int[n];
-	for (int i=0; i <n;++i)
-		cin >> v[i];
-		
-	partition(0, n-1);
-	for (int i=0; i <n;++i)
-		cout << v[i] << ' ';
-	
+	arr = new int[n];
+	for (int i = 0; i < n; ++i)
+		cin >> arr[i];
+
+	merge_Sort(n, arr, 0, n - 1);
+
+	for (int i = 0; i < n; ++i)
+		cout << arr[i] << ' ';
+
+	delete[] arr;
 	return 0;
 }
 
