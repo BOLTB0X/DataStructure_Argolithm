@@ -3,7 +3,7 @@
 using namespace std;;
 
 void merge(int n, int* arr, int start, int end) {
-	int* sorted = new int[n]; // 임시
+	int* sorted = new int[n]; // 임시 정렬용
 
 	int mid = (start + end) / 2;
 	int i = start, j = mid + 1, k = start;
@@ -28,7 +28,7 @@ void merge(int n, int* arr, int start, int end) {
 	for (int a = start; a <= end; ++a)
 		arr[a] = sorted[a];
 
-	delete[] sorted;
+	delete[] sorted; // 해제
 	return;
 }
 
