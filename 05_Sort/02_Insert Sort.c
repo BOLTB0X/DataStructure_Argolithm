@@ -1,31 +1,41 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
-#include<limits.h>
-#define SIZE 1000
+#define Size 1000
 
-int a[SIZE];
+int arr[Size];
 
-int swap(int* a, int* b) {
-	int temp = *a;
+void swap(int* a, int* b) {
+	int tmp = *a;
 	*a = *b;
-	*b = temp;
+	*b = tmp;
+
+	return;
+}
+
+void insert_Sort(int n) {
+	for (int i = 1; i < n; ++i) {
+		for (int j = i; j > 0; --j) {
+			if (arr[j] < arr[j - 1])
+				swap(&arr[j], &arr[j - 1]);
+			else
+				break;
+		}
+	}
+
+	return;
 }
 
 int main(void) {
 	int n;
+
 	scanf("%d", &n);
-	for (int i = 0; i < n; i++) scanf("%d", &a[i]);
-	for (int i = 0; i < n - 1; i++) {
-		int j = i;
-		while (j>=0 && a[j]>a[j+1]){
-			swap(&a[j], &a[j + 1]);
-			j--;
-		}
-	}
-	for (int i = 0; i < n; i++) {
-		printf("%d ", a[i]);
-	}
-	printf("\n");
-	system("pause");
+	for (int i = 0; i < n; ++i)
+		scanf("%d", &arr[i]);
+
+	insert_Sort(n);
+
+	for (int i = 0; i < n; ++i)
+		printf("%d ", arr[i]);
+
 	return 0;
 }
