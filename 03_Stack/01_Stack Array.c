@@ -3,8 +3,9 @@
 #define INF 99999999
 
 int stack[SIZE];
-int top = -1;
+int top = -1; 
 
+// push
 void push(int data) { 
 	if (top == SIZE - 1) {
 		printf("스택 오버플로우가 발생\n");
@@ -21,6 +22,7 @@ void show() {
 	printf("--- 스택의 최하단 ---\n");
 }
 
+// pop
 int pop() {
 	if (top == -1) {
 		printf("스택 언더플로우 발생\n");
