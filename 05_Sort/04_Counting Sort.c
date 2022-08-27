@@ -4,20 +4,23 @@
 
 int n, m;
 int a[MAX_VALUE];
-//°ªÀ» ÀÎµ¦½º·Î »ï°í ¿ø¼Ò °ªÀ» Áõ°¡½ÃÅ²´Ù.
-//==> Å©±â¸¦ ±âÁØÀ¸·Î Á¤·Ä
-//==> ¸Þ¸ð¸®È¿À²Àº ¶³¾îÁöÁö¸¸ ¼Óµµ´Â ³ô´Ù.
+
+//ê°’ì„ ì¸ë±ìŠ¤ë¡œ ì‚¼ê³  ì›ì†Œ ê°’ì„ ì¦ê°€ì‹œí‚¨ë‹¤.
+//==> í¬ê¸°ë¥¼ ê¸°ì¤€ìœ¼ë¡œ ì •ë ¬
+//==> ë©”ëª¨ë¦¬íš¨ìœ¨ì€ ë–¨ì–´ì§€ì§€ë§Œ ì†ë„ëŠ” ë†’ë‹¤.
 int main(void) {
 	scanf("%d", &n);
 	for (int i = 0; i < n; i++) {
 		scanf("%d", &m);
 		a[m]++;
 	}
+
 	for (int i = 0; i < MAX_VALUE; i++) {
 		while (a[i] != 0) {
-			printf("%d ", i); //Â÷·Ê´ë·Î ¿ø¼ÒÀÇ °³¼ö¸¸Å­ Ãâ·Â
+			printf("%d ", i); //ì°¨ë¡€ëŒ€ë¡œ ì›ì†Œì˜ ê°œìˆ˜ë§Œí¼ ì¶œë ¥
 			a[i]--;
 		}
 	}
 	system("pause");
+        return 0;
 }
