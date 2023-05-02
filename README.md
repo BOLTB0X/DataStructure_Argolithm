@@ -1,21 +1,23 @@
 # DataStructure_Argolithm
 
-공부했던 강의 또는 독학으로 공부했던 내용을 복습하며 공부하는 C/C++/Python 레파지토리였지만 Swift 추가하기위해
-<br/>
 묵혀났던 레파지토리 다시 재개
 <br/>
 
 ## contents
 
-### 스위프트(Swift)
-
-- [stack]()
+- [고득점 Kit](https://github.com/BOLTB0X/DataStructure_Argolithm/tree/main/코딩테스트%20고득점%20Kit)
   <br/>
 
-- [Queue]()
+- [프로그래머스](https://github.com/BOLTB0X/Swift_Study/tree/main/Level%201)
   <br/>
 
-- [시계방향 회전]()
+- [BOJ](https://github.com/BOLTB0X/Swift_Study/tree/main/Level%202)
+  <br/>
+
+- [DataStructure]()
+  <br/>
+
+- [Argolithm]()
   <br/>
 
 ---
@@ -28,3 +30,10 @@ SW Basic 강의 (나동빈)
 <br/>
 
 [Apple developer](https://developer.apple.com/documentation/)
+<br/>
+
+[programmers](https://programmers.co.kr)
+<br/>
+
+[백준](https://www.acmicpc.net)
+<br/>
