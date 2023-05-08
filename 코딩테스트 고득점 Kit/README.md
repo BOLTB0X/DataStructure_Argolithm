@@ -1,5 +1,8 @@
 # 코딩테스트 고득점 Kit
 
+![img](https://school.programmers.co.kr/assets/img-practice-kit-algorithm-c24271e1b8855af11d6c1c6d75f943278e83bdf4382ff082047bf89f58c0450a.png)
+<br/>
+
 풀이와 코드 저장용
 <br/>
 
