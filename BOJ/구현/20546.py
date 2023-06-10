@@ -15,24 +15,23 @@ jMoney, sMoney = N, N # 갖고 있는 돈
 jScore, sScore = 0, 0 # 준현이, 성민이
 answer = [0,0]
 # 0 1 2 3 4 5 6 7 8 9 10 11 12 13
-
 for i in range(len(budgetList)):
     # 준현이가 살수 있다면
     if budgetList[i] <= jMoney:
         jScore += (jMoney//budgetList[i])
-        jMoney -= (jMoney//budgetList[i]) * budgetList[i] 
+        jMoney = jMoney%budgetList[i]
     
     # 성민
-    if i - 2 >= 0:
+    if i >= 3:
         # 하락
         # 3 6 14
-        if budgetList[i] < budgetList[i-1] < budgetList[i-2]:
+        if budgetList[i-1] < budgetList[i-2] < budgetList[i-3]:
             if sMoney >= budgetList[i]:
                 sScore += sMoney//budgetList[i]
-                sMoney -= (sMoney // budgetList[i]) * budgetList[i]
+                sMoney = sMoney % budgetList[i]
         
         # 상승 -> 팔아야함
-        elif budgetList[i] > budgetList[i-1] > budgetList[i-2]:
+        elif  sScore != 0 and budgetList[i-1] > budgetList[i-2] > budgetList[i-3]:
             sMoney += (sScore * budgetList[i])
             sScore = 0
                 
