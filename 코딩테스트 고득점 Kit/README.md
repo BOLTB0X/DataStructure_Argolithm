@@ -10,10 +10,10 @@
 
 ### 해시
 
-- [폰켓몬](https://github.com/BOLTB0X/Swift_Study/blob/main/고득점%20kit/해시/폰켓몬/README.md)
+- [폰켓몬](https://github.com/BOLTB0X/DataStructure_Argolithm/blob/main/%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8%20%EA%B3%A0%EB%93%9D%EC%A0%90%20Kit/%ED%95%B4%EC%8B%9C/%ED%8F%B0%EC%BC%93%EB%AA%AC/README.md)
   <br/>
 
-- [완주하지 못한 선수](https://github.com/BOLTB0X/Swift_Study/tree/main/고득점%20kit/해시/완주하지%20못한%20선수)
+- [완주하지 못한 선수](https://github.com/BOLTB0X/DataStructure_Argolithm/blob/main/%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8%20%EA%B3%A0%EB%93%9D%EC%A0%90%20Kit/%ED%95%B4%EC%8B%9C/%EC%99%84%EC%A3%BC%ED%95%98%EC%A7%80%20%EB%AA%BB%ED%95%9C%20%EC%84%A0%EC%88%98/README.md)
   <br/>
 
 - [전화번호 목록]()
@@ -37,13 +37,13 @@
 
 ### 정렬
 
-- [K번쨰수](https://github.com/BOLTB0X/Swift_Study/tree/main/고득점%20kit/정렬/K번째수)
+- [K번쨰수](https://github.com/BOLTB0X/DataStructure_Argolithm/blob/main/%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8%20%EA%B3%A0%EB%93%9D%EC%A0%90%20Kit/%EC%A0%95%EB%A0%AC/K%EB%B2%88%EC%A7%B8%EC%88%98/README.md)
   <br/>
 
-- [가장 큰 수](https://github.com/BOLTB0X/Swift_Study/blob/main/고득점%20kit/정렬/가장%20큰%20수/README.md)
+- [가장 큰 수](https://github.com/BOLTB0X/DataStructure_Argolithm/blob/main/%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8%20%EA%B3%A0%EB%93%9D%EC%A0%90%20Kit/%EC%A0%95%EB%A0%AC/%EA%B0%80%EC%9E%A5%20%ED%81%B0%20%EC%88%98/README.md)
   <br/>
 
-- [H-Index](https://github.com/BOLTB0X/Swift_Study/tree/main/고득점%20kit/정렬/H-Index)
+- [H-Index](https://github.com/BOLTB0X/DataStructure_Argolithm/blob/main/%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8%20%EA%B3%A0%EB%93%9D%EC%A0%90%20Kit/%EC%A0%95%EB%A0%AC/H-Index/README.md)
   <br/>
 
 ---

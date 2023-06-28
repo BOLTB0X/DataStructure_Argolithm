@@ -1,42 +1,42 @@
 # 2022 KAKAO BLIND RECRUITMENT 신고 결과 받기
+# level 1
+# https://school.programmers.co.kr/learn/courses/30/lessons/92334
+
 def solution(id_list, report, k):
     answer = []
-    idDict = {} # 누가 누구를
-    idTotDict = {} # 총 신고 당한 것 체크 
-    checkDict = {} # 최종적으로 정지당한 아이디 체크
-    
-    for id in id_list: # 생성
-        idTotDict[id] = 0 
-        checkDict[id] = []
-    
+    idDict = {}  # 본인이 신고해서 정지당한
+    idCountDict = {}  # 아이디당 신고 당한
+    reportDict = {}  # 신고를 저장할 딕셔너리
+
+    for id in id_list:  # 딕셔너리 초기화
+        idDict[id] = 0
+        idCountDict[id] = 0
+        reportDict[id] = []
+
+    # 아이디당 신고한 거 체크
     for r in report:
-        a,b = r.split() # a는 신고자 b는 신고 당한사람
-        if not a in idDict:
-            idDict[a] = [b]
-        else:
-            if b in idDict[a]: # 중복 신고 X
-                continue
-            idDict[a].append(b)
-    
-    #print(idTotDict)
-    #print(idDict)
-    
-    # 신고 당한 넘들을 체크 해줌
-    for (key, value) in idDict.items():
+        a, b = r.split()  # 분리
+
+        if not b in reportDict[a]:  # 중복 방지
+            reportDict[a].append(b)
+
+    # 이제 유저별 신고당한 횟수를 체크
+    for (key, value) in reportDict.items():
         for v in value:
-            idTotDict[v] += 1
-    #print(idTotDict)
-    
-    # 신고한 사람이 보낸 아이디 체크
-    for (key, value) in idDict.items():
+            idCountDict[v] += 1
+
+    # print(reportDict)
+    # print(idCountDict)
+
+    # 여기서 본인이 신고한 넘들 중 k 이상 당한 넘들을 체크
+    for (key, value) in reportDict.items():
+        cnt = 0
         for v in value:
-            if idTotDict[v] >= k:
-                checkDict[key].append(v)
-    
+            if idCountDict[v] >= k:
+                cnt += 1
+        idDict[key] = cnt  # 신고 당한 놈들 수를 넣어줌
+
     # 정답에 넣어줌
-    for (key, value) in checkDict.items():
-        if len(value) == 0:
-            answer.append(0)
-        else:
-            answer.append(len(value))
+    for (key, value) in idDict.items():
+        answer.append(value)
     return answer
