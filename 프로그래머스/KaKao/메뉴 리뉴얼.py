@@ -1,53 +1,49 @@
-# 2021 KAKAO BLIND RECRUITMENT 메뉴 리뉴얼
-# level 2
-# https://school.programmers.co.kr/learn/courses/30/lessons/72411
-combi = []
+combi = []  # 조합
 
-# 조합 만들기
+# DFS로 조합
 
 
-def DFS(n, s, idx, st):
-    if len(st) == n:
-        tmp = list(st)
+def DFS(order, orderCombi, cur, level):
+    if len(orderCombi) == level:  # 탈출 조건
+        tmp = list(orderCombi)  # 정렬을 위해
         tmp.sort()
-        combi.append(''.join(tmp))
+        combi.append("".join(tmp))
         return
 
-    for i in range(idx, len(s)):
-        DFS(n, s, i+1, st+s[i])
+    for i in range(cur, len(order)):
+        DFS(order, orderCombi+order[i], i+1, level)
 
 
 def solution(orders, course):
     answer = []
-    global combi
+    global combi  # 전역변수 이용
 
-    for c in course:
-        for i in range(len(orders)):
-            cnt = 0
-            # 2갯수만큼 쪼개기
-            DFS(c, orders[i], 0, "")
+    for c in course:  # 코스요리 개수부터 하고
+        # 이에 대한 조합을 함
+        for order in orders:  # 각 주문 메뉴에 대한 만들어야할 코스 요리수의 조합 생성
+            DFS(order, "", 0, c)
 
         combi = list(set(combi))  # 중복 제거
         # print(combi)
 
-        comDict = {}
+        # 이 조합으 각 주문 메뉴에 있는지 체크
+        combiDict = {}  # 나온 카운트를 담아둘 딕셔너리
+        for com in combi:
+            for order in orders:
+                # 떨어져있는 경우도 체크하기 위해
+                if all(c in order for c in com):
+                    if not com in combiDict:  # 생성
+                        combiDict[com] = 1
+                    else:  # 카운트
+                        combiDict[com] += 1
+        # print(combiDict
+        if combiDict:  # 생성 되었다면
+            maxValue = max(combiDict.values())
+            if maxValue >= 2:
+                for (key, value) in combiDict.items():
+                    if value == maxValue:
+                        answer.append(key)
+        combi = []  # 다음것을 위해
 
-        for com in combi:  # 딕셔너리로 체크
-            for o in orders:
-                if all(c in o for c in com):
-                    if not com in comDict:
-                        comDict[com] = 1
-                    else:
-                        comDict[com] += 1
-        # print(comDict)
-        if comDict:
-            maxValue = max(comDict.values())  # 최댓값 찾기
-            for (key, value) in comDict.items():
-                if maxValue >= 2 and value == maxValue:
-                    answer.append(key)
-        combi = []
-
-    # print(answer)
-    # 알파벳 순으로 오름차순 정렬
-    answer.sort()
+    answer.sort()  # 알파벳 정렬
     return answer
