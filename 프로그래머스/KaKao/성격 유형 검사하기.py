@@ -10,25 +10,51 @@ def getIndex(st):
     else:
         return 3
 
+
 def solution(survey, choices):
     answer = ''
-    choicesScore = [0,3,2,1,0,1,2,3]
-    jipyo = [{"R": 0, "T": 0}, {"C": 0, "F": 0}, {"J": 0, "M": 0}, {"A": 0, "N": 0}]
-    
+    choicesScore = [0, 3, 2, 1, 0, 1, 2, 3]
+    jipyo = [{"R": 0, "T": 0}, {"C": 0, "F": 0},
+             {"J": 0, "M": 0}, {"A": 0, "N": 0}]
+
     for i in range(len(survey)):
         tmp = survey[i]
         idx = getIndex(tmp[0])
-        if choices[i] > 4: # 크다면
-            
+        if choices[i] > 4:  # 크다면
+
             jipyo[idx][survey[i][1]] += choicesScore[choices[i]]
         elif choices[i] < 4:
             jipyo[idx][survey[i][0]] += choicesScore[choices[i]]
 
-    #print(jipyo)
+    # print(jipyo)
 
     for j in jipyo:
         tmp = dict(sorted(j.items(), key=lambda x: (-x[1], x[0])))
         answer += list(tmp)[0]
     return answer
 
+
 print(solution(["AN", "CF", "MJ", "RT", "NA"], [5, 3, 2, 7, 5]))
+
+# 다른 풀이
+
+
+def solution(survey, choices):
+    answer = ''
+    typeArr = {"R": 0, "T": 0, "C": 0, "F": 0, "J": 0, "M": 0, "A": 0, "N": 0}
+    scoreArr = [0, 3, 2, 1, 0, 1, 2, 3]
+
+    for i in range(len(survey)):
+        if choices[i] > 4:  # 동의
+            typeArr[survey[i][1]] += scoreArr[choices[i]]
+        else:
+            typeArr[survey[i][0]] += scoreArr[choices[i]]
+
+    # print(typeArr)
+
+    for t in ["RT", "CF", "JM", "AN"]:
+        if typeArr[t[0]] < typeArr[t[1]]:
+            answer += t[1]
+        else:
+            answer += t[0]
+    return answer
