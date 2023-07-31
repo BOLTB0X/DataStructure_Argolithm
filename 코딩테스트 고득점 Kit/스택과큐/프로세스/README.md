@@ -128,7 +128,7 @@ func solution(_ priorities:[Int], _ location:Int) -> Int {
     // 아니면 회전시킴
     while que.isEmpty == false {
         // (int,int)이므로 편의를 위해
-         let cur = que.removeFirst()
+        let cur = que.removeFirst()
         // 최상단과 중요도가 같다면
         if cur.1 == pq.first! {
             answer += 1
