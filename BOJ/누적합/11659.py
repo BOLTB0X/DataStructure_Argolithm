@@ -6,17 +6,11 @@ def input(): return sys.stdin.readline().rstrip()
 
 N, M = map(int, input().split())
 arr = list(map(int, input().split()))
-tmp = [0, arr[0]]
-answer = []
+prefixsum = [0] * (N+1)
 
-for i in range(1, N):
-    tmp.append(arr[i]+tmp[i])
-
-# print(tmp)
+for i in range(1, N+1):
+    prefixsum[i] = prefixsum[i-1] + arr[i-1]
 
 for _ in range(M):
-    i, j = map(int, input().split())
-    answer.append(tmp[j] - tmp[i-1])
-
-for ans in answer:
-    print(ans)
+    a, b = map(int, input().split())
+    print(prefixsum[b] - prefixsum[a-1])
