@@ -1,5 +1,6 @@
 # 14889 스타트와 링크
 # https://www.acmicpc.net/problem/14889
+
 import sys
 def input(): return sys.stdin.readline().rstrip()
 
