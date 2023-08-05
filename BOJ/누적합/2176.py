@@ -13,9 +13,7 @@ for i in range(1, N+1):
         prefixsum[i][j] = board[i-1][j-1] + prefixsum[i-1][j] + \
             prefixsum[i][j-1] - prefixsum[i-1][j-1]
 
-
 T = int(input())
-
 for _ in range(T):
     x1, y1, x2, y2 = map(int, input().split())
     print(prefixsum[x2][y2] - prefixsum[x1-1][y2] -
