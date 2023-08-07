@@ -1,57 +1,52 @@
-# 2020 카카오 인턴십 수식 최대화
 from itertools import permutations
 
 
-def transList(st):
-    ret = []
-    tmp = ""
-
-    for s in st:
-        if s == "*" or s == "-" or s == "+":
-            ret.append(tmp)
-            ret.append(s)
-            tmp = ""
+def getList(expression):
+    expList = []
+    tmpValue = ""
+    for exp in expression:
+        if exp in "+-*":
+            expList.append(tmpValue)
+            expList.append(exp)
+            tmpValue = ""
         else:
-            tmp += s
+            tmpValue += exp
 
-    ret.append(tmp)
-    return ret
+    if tmpValue != "":
+        expList.append(tmpValue)
 
-
-def opreationFunc(a, b, op):
-    if op == "*":
-        return str(int(a) * int(b))
-    elif op == "+":
-        return str(int(a) + int(b))
-    else:
-        return str(int(a) - int(b))
+    return expList
 
 
-def getValue(expression, Op):
-    exp = transList(expression)
+def operationExp(a, b, op):
+    if op == "+":
+        return str(int(a)+int(b))
+    elif op == "-":
+        return str(int(a)-int(b))
+    return str(int(a)*int(b))
 
-    for op in Op:  # exp 리스트 중 op가 나온 부분만 연산
-        # 나머진 stack에 넣어두고 교체
+
+def getValue(per, expression):
+    expList = getList(expression)
+
+    for p in per:
         stack = []
 
-        while exp:
-            tmp = exp.pop(0)  # 첫번쨰
-            if stack and tmp == op:
-                stack.append(opreationFunc(stack.pop(), exp.pop(0), tmp))
+        while expList:
+            tmp = expList.pop(0)
+
+            if stack and tmp == p:
+                stack.append(operationExp(stack.pop(), expList.pop(0), tmp))
             else:
                 stack.append(tmp)
+        expList = stack
 
-        exp = stack
-        # print(exp)
-    return abs(int(exp[0]))
+    return abs(int(expList[0]))
 
 
 def solution(expression):
     answer = 0
 
-    priorityOpArr = list(permutations(["*", "+", "-"], 3))
-
-    for priorityOp in priorityOpArr:
-        answer = max(answer, getValue(expression, priorityOp))
-
+    for per in permutations(["+", "-", "*"], 3):
+        answer = max(answer, getValue(per, expression))
     return answer

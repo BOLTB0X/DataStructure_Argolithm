@@ -2,16 +2,17 @@
 
 def solution(s):
     answer = ""
-    alpDict = {"zero": "0", "one": "1", "two": "2", "three": "3", "four": "4", "five": "5", "six": "6", "seven": "7", "eight": "8", "nine": "9"}
-    
-    word = ""
-    for ss in s:
-        if ss.isdigit(): # 숫자인 경우
-            answer += ss
+    alpDic = {"zero": "0", "one": "1", "two": "2", "three": "3", "four": "4",
+              "five": "5", "six": "6", "seven": "7", "eight": "8", "nine": "9"}
+    tmp = ""
+
+    for ch in s:
+        if not ch in "0123456789":
+            tmp += ch
+            if len(tmp) > 2:
+                if tmp in alpDic:
+                    answer += alpDic[tmp]
+                    tmp = ""
         else:
-            word += ss
-            if len(word) > 2 and word in alpDict:
-                answer += alpDict[word]
-                word = ""
-            
+            answer += ch
     return int(answer)
