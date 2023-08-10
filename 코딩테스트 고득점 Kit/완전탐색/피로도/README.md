@@ -35,147 +35,112 @@ Level 2
 
 **_여기서 DFS로 순열하듯히 풀면 해결이 가능_**
 
-1. 방문리스트 생성
-
-```swift
-// 방문리스트
-var visited = Array(repeating: false, count: dungeons.count);
-```
-
-저 배열을 탐색하며 탐색한 순서를 남기기 위해 방문리스트가 필요
+먼저 던전을 순열로 나올수 있는 것들을 다 만들어 줌
 <br/>
 
-2. DFS
+```python
+from itertools import permutations
 
-   1. DFS 메소드 내 for문으로 dungeons의 길이 만큼 반복시킴
-      <br/>
-   2. for문 내 재방문인 경우와 현재 체력으로 진행을 못하는 경우를 패스 시킴
-      <br/>
-   3. 현재 진행이 가능하면 소모 필요도를 깎고 최대 길이인지 확인
-      <br/>
-
-```swift
-// 던전 확인
-for i in 0..<dungeons.count {
-    // 재방문인 경우
-    if visited[i] == true {
-        continue
-    }
-
-    // 현재 체력으로 최소필요피로도를 소화할수 없는 경우
-    if cur < dungeons[i][0] {
-        continue
-    }
-
-    var next = cur // 파라미터는 let이므로
-    visited[i] = true // 방문 체크
-    answer = max(answer, level+1) // 정답 체크
-    DFS(next-dungeons[i][1], level+1) // DFS 호출
-    visited[i] = false // 순열처럼 순서를 바꿔가며 진행하니
-}
+for per in permutations(dungeons, len(dungeons)):
 ```
 
-3. 참고
-
-탐색의 길이를 체크하는 방법은 2가지임
 <br/>
 
-- if문 용 (DFS 내 for문 순회 이전에 선언)
-  <br/>
+스위프트는 지원라이브러리가 없으니 DFS로 만 인덱스들을 담도록 작성
+<br/>
 
 ```swift
-if depth > answer {
-    answer = depth
+func permutation(per: [Int], depth: Int) {
+    if depth == dungeons.count {
+        perArr.append(per)
+        return
+    }
+
+    for i in 0..<dungeons.count {
+        if visited[i] {
+            continue
+        }
+
+        visited[i] = true
+        permutation(per: per+[i], depth: depth+1)
+        visited[i] = false
+    }
+    return
 }
 ```
 
 <br/>
 
-- 다음 DFS 호출 전 체크
-  <br/>
-
-```swift
-answer = max(answer, level+1) // 정답 체크
-DFS(next-dungeons[i][1], level+1) // DFS 호출
-```
+이제 문제 완전탐색을 해주면 끝
+<br/>
 
 ## 최종 코드
-
-스위프트 1차
-<br/>
 
 ```swift
 import Foundation
 
 func solution(_ k:Int, _ dungeons:[[Int]]) -> Int {
-    var answer: Int = 0
-    // 방문리스트
-    var visited: [Bool] = Array(repeating: false, count: 9)
+    var answer:Int = 0
+    var visited: [Bool] = Array(repeating: false, count: dungeons.count)
+    var perArr:[[Int]] = []
 
-    func DFS(cur: Int, board: [[Int]], depth: Int) {
-        // 다 돌았다면
-        if depth > answer {
-            answer = depth
+    func permutation(per: [Int], depth: Int) {
+        if depth == dungeons.count {
+            perArr.append(per)
+            return
         }
 
-        for i in 0..<board.count {
-            // 재방문
+        for i in 0..<dungeons.count {
             if visited[i] {
-                continue;
+                continue
             }
 
-            // 현재가 최소필요도보다 크다면 재귀 호출
-            if cur >= board[i][0] {
-                visited[i] = true
-                DFS(cur: cur-board[i][1], board: board, depth: depth+1)
-                visited[i] = false
-            }
+            visited[i] = true
+            permutation(per: per+[i], depth: depth+1)
+            visited[i] = false
         }
         return
     }
 
-    // dfs로 순열 시작
-    DFS(cur: k, board: dungeons, depth: 0)
+    permutation(per:[], depth: 0)
+
+    for per in perArr {
+        var cnt:Int = 0
+        var cur:Int = k
+
+        for p in per {
+            if dungeons[p][0] > cur {
+                continue
+            }
+
+            cnt += 1
+            cur -= dungeons[p][1]
+        }
+
+        answer = max(answer, cnt)
+    }
     return answer
 }
-
 ```
 
-스위프트 2차
 <br/>
 
-```swift
-import Foundation
+```python
+from itertools import permutations
 
-func solution(_ k:Int, _ dungeons:[[Int]]) -> Int {
-    var answer = 0;
-    // 방문리스트
-    var visited = Array(repeating: false, count: dungeons.count);
 
-    // MARK: 깊이우선탐색
-    func DFS(_ cur:Int, _ level:Int) {
-        // 던전 확인
-        for i in 0..<dungeons.count {
-            // 재방문인 경우
-            if visited[i] == true {
-                continue
-            }
+def solution(k, dungeons):
+    answer = -1
 
-            // 현재 체력으로 최소필요피로도를 소화할수 없는 경우
-            if cur < dungeons[i][0] {
-                continue
-            }
+    for per in permutations(dungeons, len(dungeons)):
+        cur = k
+        cnt = 0
+        for p in per:
+            if p[0] <= cur:
+                cnt += 1
+                cur -= p[1]
 
-            var next = cur // 파라미터는 let이므로
-            visited[i] = true // 방문 체크
-            answer = max(answer, level+1) // 정답 체크
-            DFS(next-dungeons[i][1], level+1) // DFS 호출
-            visited[i] = false // 순열처럼 순서를 바꿔가며 진행하니
-        }
-    }
+        answer = max(answer, cnt)
+    return answer
 
-    DFS(k,0); // 0부터 시작
-
-    return answer;
-}
 ```
