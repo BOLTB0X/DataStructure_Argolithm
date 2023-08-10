@@ -68,22 +68,22 @@
 
 ### 완전탐색
 
-- [최소직사가형](https://github.com/BOLTB0X/Swift_Study/tree/main/고득점%20kit/완전탐색/최소직사각형)
+- [최소직사가형](https://github.com/BOLTB0X/DataStructure_Argolithm/tree/main/%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8%20%EA%B3%A0%EB%93%9D%EC%A0%90%20Kit/%EC%99%84%EC%A0%84%ED%83%90%EC%83%89/%EC%B5%9C%EC%86%8C%EC%A7%81%EC%82%AC%EA%B0%81%ED%98%95)
   <br/>
 
-- [모의고사](https://github.com/BOLTB0X/Swift_Study/tree/main/고득점%20kit/완전탐색/모의고사)
+- [모의고사](https://github.com/BOLTB0X/DataStructure_Argolithm/tree/main/%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8%20%EA%B3%A0%EB%93%9D%EC%A0%90%20Kit/%EC%99%84%EC%A0%84%ED%83%90%EC%83%89/%EB%AA%A8%EC%9D%98%EA%B3%A0%EC%82%AC)
   <br/>
 
-- [소수 찾기](https://github.com/BOLTB0X/Swift_Study/tree/main/고득점%20kit/완전탐색/모의고사)
+- [소수 찾기](https://github.com/BOLTB0X/DataStructure_Argolithm/tree/main/%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8%20%EA%B3%A0%EB%93%9D%EC%A0%90%20Kit/%EC%99%84%EC%A0%84%ED%83%90%EC%83%89/%EC%86%8C%EC%88%98%20%EC%B0%BE%EA%B8%B0)
   <br/>
 
-- [피로도](https://github.com/BOLTB0X/Swift_Study/tree/main/고득점%20kit/완전탐색/모의고사)
+- [피로도](https://github.com/BOLTB0X/DataStructure_Argolithm/tree/main/%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8%20%EA%B3%A0%EB%93%9D%EC%A0%90%20Kit/%EC%99%84%EC%A0%84%ED%83%90%EC%83%89/%ED%94%BC%EB%A1%9C%EB%8F%84)
   <br/>
 
-- [전력망을 둘로 나누기](https://github.com/BOLTB0X/Swift_Study/tree/main/고득점%20kit/완전탐색/전력망을%20둘로%20나누기)
+- [전력망을 둘로 나누기](https://github.com/BOLTB0X/DataStructure_Argolithm/tree/main/%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8%20%EA%B3%A0%EB%93%9D%EC%A0%90%20Kit/%EC%99%84%EC%A0%84%ED%83%90%EC%83%89/%EC%A0%84%EB%A0%A5%EB%A7%9D%EC%9D%84%20%EB%91%98%EB%A1%9C%20%EB%82%98%EB%88%84%EA%B8%B0)
   <br/>
 
-- [모음사전](https://github.com/BOLTB0X/Swift_Study/tree/main/고득점%20kit/완전탐색/모음%20사전)
+- [모음사전](https://github.com/BOLTB0X/DataStructure_Argolithm/tree/main/%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8%20%EA%B3%A0%EB%93%9D%EC%A0%90%20Kit/%EC%99%84%EC%A0%84%ED%83%90%EC%83%89/%EB%AA%A8%EC%9D%8C%20%EC%82%AC%EC%A0%84)
   <br/>
 
 ---
