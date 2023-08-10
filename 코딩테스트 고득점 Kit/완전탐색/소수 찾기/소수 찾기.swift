@@ -5,25 +5,25 @@ func solution(_ numbers:String) -> Int {
     var numbersArr = numbers.map{String($0)} // 편의를 위해
 
     func isPrime(_ num: String) {
-    let num = Int(num)!
-    var cnt = 0
+        let num = Int(num)!
+        var cnt = 0
 
-    if num > 1{
-        for i in 2...num{
-            if cnt > 1{
-                break
+        if num > 1 {
+            for i in 2...num {
+                if cnt > 1{
+                    break
+                }
+                if num % i == 0 {
+                    cnt += 1
+                }
             }
-            if num % i == 0 {
-                cnt += 1
-            }
-        }
 
-        if cnt == 1{
-            // 3. 소수이면 Set에 추가합니다.
-            answer.insert(num) // Set에 넣어주어 중복 제거
+            if cnt == 1 {
+                // 3. 소수이면 Set에 추가합니다.
+                answer.insert(num) // Set에 넣어주어 중복 제거
+            }
         }
     }
-}
     
     // DFS로 순열 구현
     func DFS(array: [String], number: String, n: Int, level: Int) {
