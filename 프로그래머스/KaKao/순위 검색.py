@@ -1,45 +1,40 @@
-# 2021 KAKAO BLIND RECRUITMENT 순위 검색
 from collections import defaultdict
 from itertools import combinations
-from bisect import bisect_left  # 이분탐색
+from bisect import bisect_left
 
 
 def solution(info, query):
     answer = []
-    infoDict = defaultdict(list)
+    infoDic = defaultdict(list)
 
     for i in info:
-        tmpI = i.split(" ")
-        tmpKey = tmpI[:-1]  # 조건들
-        # print(tmpKey)
-        tmpValue = int(tmpI[-1])  # 점수
+        tmp = i.split(" ")
+        tmpArr = tmp[:4]
+        tmpScore = int(tmp[-1])
 
-        for j in range(5):  # 0부터하는 이유는 전부 다 "-" 처리 할수 있어서
+        for j in range(5):
             for com in combinations([0, 1, 2, 3], j):
-                tmpArr = tmpKey.copy()
+                copyTmp = tmpArr.copy()
                 for c in com:
-                    tmpArr[c] = "-"
+                    copyTmp[c] = "-"
 
-                # print(tmpArr)
-                tmpKeyStr = "".join(tmpArr)
-                infoDict[tmpKeyStr].append(tmpValue)
+                tmpKey = ''.join(copyTmp)
+                infoDic[tmpKey].append(tmpScore)
 
-    # print(infoDict)
-    for value in infoDict.values():
+    for value in infoDic.values():
         value.sort()
 
     for q in query:
-        q = q.replace("and", "")
-        qArr = q.split()
-
-        qKey = "".join(qArr[:-1])
-        qValue = int(qArr[-1])
+        q = q.replace("and", '')
+        tmpQ = q.split()
+        searchKey = ''.join(tmpQ[:4])
+        searchValue = int(tmpQ[4])
+        # print(searchKey, searchValue)
         cnt = 0
-
-        if qKey in infoDict:
-            targetArr = infoDict[qKey]
-            tatgetIdx = bisect_left(targetArr, qValue)
-            cnt = len(targetArr) - tatgetIdx
-
+        if searchKey in infoDic:
+            arr = infoDic[searchKey]
+            idx = bisect_left(arr, searchValue)
+            cnt = len(arr)-idx
         answer.append(cnt)
+
     return answer
