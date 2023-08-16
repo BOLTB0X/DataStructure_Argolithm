@@ -1,42 +1,38 @@
-# 2023 KAKAO BLIND RECRUITMENT 이모티콘 할인행사
 from itertools import product
 
 maxCnt = 0
-maxTotDiscount = 0
+maxValue = 0
 
 
-def solution(users, emoticons):
-    for per in product([10, 20, 30, 40], repeat=len(emoticons)):
-        calculateEmoticon(users, emoticons, per)
-    return [maxCnt, maxTotDiscount]
-
-
-def calculateEmoticon(users, emoticons, per):
-    global maxCnt
-    global maxTotDiscount
-    cnt = 0
-    totDiscount = 0
+def calculateEmoticons(users, emoticons, per):
+    global maxCnt, maxValue
+    cnt, value = 0, 0
 
     for user in users:
         tot = 0
-        for i in range(len(emoticons)):
+        for i in range(len(per)):
             if user[0] <= per[i]:
-                tot += (emoticons[i]*(100 - per[i])/100)
-            if user[1] <= tot:
-                break
+                tot += (emoticons[i] * (100 - per[i])/100)
 
-        # print(tot)
-        # 가입이 1순위
         if tot >= user[1]:
             cnt += 1
-            tot = 0
-        totDiscount += tot
+        else:
+            value += tot
 
-    # print(cnt, totDiscount)
     if cnt >= maxCnt:
         if cnt == maxCnt:
-            maxTotDiscount = max(maxTotDiscount, totDiscount)
+            maxValue = max(value, maxValue)
         else:
-            maxTotDiscount = totDiscount
+            maxValue = value
         maxCnt = cnt
+
     return
+
+
+def solution(users, emoticons):
+    answer = []
+
+    for per in product([10, 20, 30, 40], repeat=len(emoticons)):
+        calculateEmoticons(users, emoticons, per)
+    answer = [maxCnt, maxValue]
+    return answer
