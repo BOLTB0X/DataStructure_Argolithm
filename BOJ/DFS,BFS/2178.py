@@ -2,22 +2,22 @@
 # https://www.acmicpc.net/problem/2178
 import sys
 from collections import deque
-input = lambda : sys.stdin.readline().rstrip()
+input = sys.stdin.readline
 
-N,M = map(int,input().split())
-board = [] # 격자판
-dist = [[0] * M for _ in range(N)] # 방문리스트
-dir = [[1,0],[-1,0],[0,1],[0,-1]] # 방향
+N, M = map(int, input().split())
+board = []  # 격자판
+dist = [[0] * M for _ in range(N)]  # 방문리스트
+dir = [[1, 0], [-1, 0], [0, 1], [0, -1]]  # 방향
 
 for _ in range(N):
     board.append(input())
 
 que = deque()
-que.append((0,0))
+que.append((0, 0))
 dist[0][0] = 1
 
 while que:
-    cy,cx = que.popleft()
+    cy, cx = que.popleft()
 
     for d in dir:
         ny = cy + d[0]
@@ -30,6 +30,6 @@ while que:
             continue
 
         dist[ny][nx] = dist[cy][cx] + 1
-        que.append((ny,nx))
+        que.append((ny, nx))
 
 print(dist[N-1][M-1])
