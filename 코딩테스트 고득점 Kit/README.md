@@ -16,13 +16,13 @@
 - [완주하지 못한 선수](https://github.com/BOLTB0X/DataStructure_Argolithm/blob/main/%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8%20%EA%B3%A0%EB%93%9D%EC%A0%90%20Kit/%ED%95%B4%EC%8B%9C/%EC%99%84%EC%A3%BC%ED%95%98%EC%A7%80%20%EB%AA%BB%ED%95%9C%20%EC%84%A0%EC%88%98/README.md)
   <br/>
 
-- [전화번호 목록]()
+- [전화번호 목록](https://github.com/BOLTB0X/DataStructure_Argolithm/blob/main/%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8%20%EA%B3%A0%EB%93%9D%EC%A0%90%20Kit/%ED%95%B4%EC%8B%9C/%EC%A0%84%ED%99%94%EB%B2%88%ED%98%B8%20%EB%AA%A9%EB%A1%9D/README.md)
   <br/>
 
-- [위장]()
+- [의상](https://github.com/BOLTB0X/DataStructure_Argolithm/blob/main/%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8%20%EA%B3%A0%EB%93%9D%EC%A0%90%20Kit/%ED%95%B4%EC%8B%9C/%EC%9D%98%EC%83%81/README.md)
   <br/>
 
-- [베스트앨범]()
+- [베스트앨범](https://github.com/BOLTB0X/DataStructure_Argolithm/blob/main/%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8%20%EA%B3%A0%EB%93%9D%EC%A0%90%20Kit/%ED%95%B4%EC%8B%9C/%EB%B2%A0%EC%8A%A4%ED%8A%B8%EC%95%A8%EB%B2%94/README.md)
   <br/>
 
 ---
@@ -145,8 +145,8 @@
 
 ### 그래프
 
-- [가장 먼 노드](https://github.com/BOLTB0X/Swift_Study/tree/main/고득점%20kit/그래프/가장%20먼%20노드)
+- [가장 먼 노드](https://github.com/BOLTB0X/DataStructure_Argolithm/blob/main/%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8%20%EA%B3%A0%EB%93%9D%EC%A0%90%20Kit/%EA%B7%B8%EB%9E%98%ED%94%84/%EA%B0%80%EC%9E%A5%20%EB%A8%BC%20%EB%85%B8%EB%93%9C/README.md)
   <br/>
 
-- [순위](https://github.com/BOLTB0X/Swift_Study/tree/main/고득점%20kit/그래프/순위)
+- [순위](https://github.com/BOLTB0X/DataStructure_Argolithm/blob/main/%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8%20%EA%B3%A0%EB%93%9D%EC%A0%90%20Kit/%EA%B7%B8%EB%9E%98%ED%94%84/%EC%88%9C%EC%9C%84/README.md)
   <br/>
