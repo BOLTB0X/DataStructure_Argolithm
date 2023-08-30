@@ -1,9 +1,10 @@
 def solution(s):
-    answer = ''
+    answer = []
     s = s.split(" ")
 
     for i in range(len(s)):
-        s[i] = s[i].capitalize()
-
-    answer = ' '.join(s)
-    return answer
+        if s[i]:
+            answer.append(s[i][0].upper()+s[i][1:].lower())
+        else:
+            answer.append(s[i])
+    return " ".join(answer)
