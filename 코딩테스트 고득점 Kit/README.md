@@ -108,12 +108,6 @@
 - [구명보트](https://github.com/BOLTB0X/DataStructure_Argolithm/tree/main/%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8%20%EA%B3%A0%EB%93%9D%EC%A0%90%20Kit/%ED%83%90%EC%9A%95%EB%B2%95/%EA%B5%AC%EB%AA%85%EB%B3%B4%ED%8A%B8)
   <br/>
 
-- [섬 연결하기]()
-  <br/>
-
-- [단속카메라]()
-  <br/>
-
 ---
 
 ### 동적계획법(Dynamic Programming)
@@ -137,16 +131,16 @@
 - [게임 맵 최단거리](https://github.com/BOLTB0X/Swift_Study/tree/main/고득점%20kit/DFSBFS/게임%20맵%20최단거리)
   <br/>
 
-- [단어 변환]()
+- [단어 변환](https://github.com/BOLTB0X/DataStructure_Argolithm/tree/main/%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8%20%EA%B3%A0%EB%93%9D%EC%A0%90%20Kit/DFSBFS/%EB%8B%A8%EC%96%B4%EB%B3%80%ED%99%98)
   <br/>
 
-- [여행경로]()
+- [여행경로](https://github.com/BOLTB0X/DataStructure_Argolithm/tree/main/%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8%20%EA%B3%A0%EB%93%9D%EC%A0%90%20Kit/DFSBFS/%EC%97%AC%ED%96%89%EA%B2%BD%EB%A1%9C)
   <br/>
 
-- [아이템 줍기]()
+- [아이템 줍기](https://github.com/BOLTB0X/DataStructure_Argolithm/tree/main/%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8%20%EA%B3%A0%EB%93%9D%EC%A0%90%20Kit/DFSBFS/%EC%95%84%EC%9D%B4%ED%85%9C%20%EC%A4%8D%EA%B8%B0)
   <br/>
 
-- [퍼즐 조각 채우기]()
+- [퍼즐 조각 채우기](https://github.com/BOLTB0X/DataStructure_Argolithm/tree/main/%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8%20%EA%B3%A0%EB%93%9D%EC%A0%90%20Kit/DFSBFS/%ED%8D%BC%EC%A6%90%20%EC%A1%B0%EA%B0%81%20%EC%B1%84%EC%9A%B0%EA%B8%B0)
   <br/>
 
 ---
