@@ -49,7 +49,13 @@
 
 ---
 
-### 힙(heap)
+### 힙(Heap)
+
+- [더 맵게](https://github.com/BOLTB0X/DataStructure_Argolithm/tree/main/%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8%20%EA%B3%A0%EB%93%9D%EC%A0%90%20Kit/%ED%9E%99/%EB%8D%94%20%EB%A7%B5%EA%B2%8C)
+  <br/>
+
+- [이중우선순위큐](https://github.com/BOLTB0X/DataStructure_Argolithm/tree/main/%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8%20%EA%B3%A0%EB%93%9D%EC%A0%90%20Kit/%ED%9E%99/%EC%9D%B4%EC%A4%91%EC%9A%B0%EC%84%A0%EC%88%9C%EC%9C%84%ED%81%90)
+  <br/>
 
 ---
 
@@ -112,6 +118,12 @@
 
 ### 동적계획법(Dynamic Programming)
 
+- [N으로 표현](<https://github.com/BOLTB0X/DataStructure_Argolithm/tree/main/%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8%20%EA%B3%A0%EB%93%9D%EC%A0%90%20Kit/%EB%8F%99%EC%A0%81%EA%B3%84%ED%9A%8D%EB%B2%95(Dynamic%20Programming)/N%EC%9C%BC%EB%A1%9C%20%ED%91%9C%ED%98%84>)
+  <br/>
+
+- [정수 삼각형](<https://github.com/BOLTB0X/DataStructure_Argolithm/tree/main/%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8%20%EA%B3%A0%EB%93%9D%EC%A0%90%20Kit/%EB%8F%99%EC%A0%81%EA%B3%84%ED%9A%8D%EB%B2%95(Dynamic%20Programming)/%EC%A0%95%EC%88%98%20%EC%82%BC%EA%B0%81%ED%98%95>)
+  <br/>
+
 ---
 
 ### 깊이/너비 우선 탐색(DFS/BFS)
@@ -119,7 +131,7 @@
 - [타겟넘버](https://github.com/BOLTB0X/Swift_Study/tree/main/고득점%20kit/DFSBFS/타겟%20넘버)
   <br/>
 
-- [네트워크]()
+- [네트워크](https://github.com/BOLTB0X/DataStructure_Argolithm/tree/main/%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8%20%EA%B3%A0%EB%93%9D%EC%A0%90%20Kit/DFSBFS/%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC)
   <br/>
 
 - [게임 맵 최단거리](https://github.com/BOLTB0X/Swift_Study/tree/main/고득점%20kit/DFSBFS/게임%20맵%20최단거리)
