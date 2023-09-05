@@ -128,7 +128,7 @@
 - [네트워크](https://github.com/BOLTB0X/DataStructure_Argolithm/tree/main/%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8%20%EA%B3%A0%EB%93%9D%EC%A0%90%20Kit/DFSBFS/%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC)
   <br/>
 
-- [게임 맵 최단거리](https://github.com/BOLTB0X/Swift_Study/tree/main/고득점%20kit/DFSBFS/게임%20맵%20최단거리)
+- [게임 맵 최단거리](https://github.com/BOLTB0X/DataStructure_Argolithm/tree/main/%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8%20%EA%B3%A0%EB%93%9D%EC%A0%90%20Kit/DFSBFS/%EA%B2%8C%EC%9E%84%20%EB%A7%B5%20%EC%B5%9C%EB%8B%A8%EA%B1%B0%EB%A6%AC)
   <br/>
 
 - [단어 변환](https://github.com/BOLTB0X/DataStructure_Argolithm/tree/main/%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8%20%EA%B3%A0%EB%93%9D%EC%A0%90%20Kit/DFSBFS/%EB%8B%A8%EC%96%B4%EB%B3%80%ED%99%98)
