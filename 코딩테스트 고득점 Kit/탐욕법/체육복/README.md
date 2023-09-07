@@ -59,6 +59,12 @@ Level 1
 
 <br/>
 
+여기서 조건문의 인덱스에 대해 걸어 둔 것을 볼수 있음
+<br/>
+
+이는 만약 그리디 여서 일단 최고의 해를 선택하는 것이니 만약 앞 놈에게 못빌리고 뒷놈에게 빌릴 수 있디면 바로 다른 조건문에 걸리기 위해 **==**이 아닌 부등호를 사용하는 것
+<br/>
+
 ## 제출 코드
 
 ```python
@@ -124,7 +130,7 @@ func solution(_ n:Int, _ lost:[Int], _ reserve:[Int]) -> Int {
         }
     }
 
-    answer = students.filter { $0 > 0 }.count // 수업가능한 학생 카운트
-    return answer - 1 // 배열의 편의를 위해 인덱스 + 1 했기 때문
+    answer = students.filter { $0 > 0 }.count-1 // 수업가능한 학생 카운트
+    return answer // 배열의 편의를 위해 인덱스 + 1 했기 때문
 }
 ```
