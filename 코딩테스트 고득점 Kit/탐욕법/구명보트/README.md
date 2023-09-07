@@ -63,6 +63,7 @@ while left <= right:
 ## 제출 코드
 
 ```python
+# 파이썬
 def solution(people, limit):
     answer = 0
     people.sort()
@@ -76,4 +77,30 @@ def solution(people, limit):
             right -= 1
         answer += 1
     return answer
+```
+
+<br/>
+
+```swift
+// 스위프트
+import Foundation
+
+func solution(_ people: [Int], limit: Int) -> Int {
+    var answer: Int = 0
+    var left: Int = 0
+    var right: Int = people.count-1
+
+    let people = people.sorted(by: <)
+
+    while left <= right {
+        if people[left]+people[right] <= limit {
+            left += 1
+            right -= 1
+        } else {
+            right -= 1
+        }
+        answer += 1
+    }
+    return answer
+}
 ```
