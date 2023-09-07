@@ -6,8 +6,7 @@ func solution(_ prices:[Int]) -> [Int] {
 
     // 빌떄까지
     while que.count > 0 {
-        var cur = que.first!
-        que.removeFirst()
+        var cur = que.removeFirst()
         var cnt:Int = 0
 
         for q in que { // 현재 보다 작을거일때만
