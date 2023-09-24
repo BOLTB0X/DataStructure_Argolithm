@@ -4,6 +4,7 @@
   },
   "python.formatting.provider": "none",
   "files.associations": {
-    "queue": "cpp"
+    "queue": "cpp",
+    "iostream": "cpp"
   }
 }
