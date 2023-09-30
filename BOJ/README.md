@@ -11,7 +11,7 @@
 | 2    | ![Silver III](https://img.shields.io/badge/실버%20III-808080?style=flat) | 2309(일곱 난쟁이)              | [백준 2309 - 일곱 난쟁이](https://www.acmicpc.net/problem/2309)               | O    |
 | 3    | ![Silver I](https://img.shields.io/badge/실버%20I-808080?style=flat)     | 1107(리모컨)                   | [백준 1107 - 리모컨](https://www.acmicpc.net/problem/1107)                    | O    |
 | 4    | ![Silver I](https://img.shields.io/badge/실버%20I-808080?style=flat)     | 16943(숫자 재배치)             | [백준 16943 - 숫자 재배치](https://www.acmicpc.net/problem/16943)             | O    |
-| 5    | ![Silver I](https://img.shields.io/badge/실버%20I-808080?style=flat)     | 1051(종이)                     | [백준 1051 - 종이](https://www.acmicpc.net/problem/1051)                      | O    |
+| 5    | ![Silver I](https://img.shields.io/badge/실버%20I-808080?style=flat)     | 1051(숫자 정사각형)            | [백준 1051 - 숫자 정사각형](https://www.acmicpc.net/problem/1051)             | O    |
 | 6    | ![Gold IV](https://img.shields.io/badge/골드%20IV-FFD700?style=flat)     | 14500(테트로미노)              | [백준 14500 - 테트로미노](https://www.acmicpc.net/problem/14500)              | O    |
 | 7    | ![Silver III](https://img.shields.io/badge/실버%20III-808080?style=flat) | 3085(사탕 게임)                | [백준 3085 - 사탕 게임](https://www.acmicpc.net/problem/3085)                 | O    |
 | 8    | ![Gold V](https://img.shields.io/badge/골드%20V-FFD700?style=flat)       | 17484(문자열 화폐)             | [백준 17484 - 문자열 화폐](https://www.acmicpc.net/problem/17484)             | O    |
