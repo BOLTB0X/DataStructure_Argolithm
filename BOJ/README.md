@@ -9,19 +9,20 @@
 | ---- | ------------------------------------------------------------------------ | ------------------------------ | ----------------------------------------------------------------------------- | ---- |
 | 1    | ![Silver I](https://img.shields.io/badge/실버%20I-808080?style=flat)     | 1527(금민수의 개수)            | [백준 1527 - 금민수의 개수](https://www.acmicpc.net/problem/1527)             | O    |
 | 2    | ![Silver III](https://img.shields.io/badge/실버%20III-808080?style=flat) | 2309(일곱 난쟁이)              | [백준 2309 - 일곱 난쟁이](https://www.acmicpc.net/problem/2309)               | O    |
-| 3    | ![Silver I](https://img.shields.io/badge/실버%20I-808080?style=flat)     | 1107(리모컨)                   | [백준 1107 - 리모컨](https://www.acmicpc.net/problem/1107)                    | O    |
+| 3    | ![Gold V](https://img.shields.io/badge/골드%20V-FFD700?style=flat)       | 1107(리모컨)                   | [백준 1107 - 리모컨](https://www.acmicpc.net/problem/1107)                    | O    |
 | 4    | ![Silver I](https://img.shields.io/badge/실버%20I-808080?style=flat)     | 16943(숫자 재배치)             | [백준 16943 - 숫자 재배치](https://www.acmicpc.net/problem/16943)             | O    |
 | 5    | ![Silver I](https://img.shields.io/badge/실버%20I-808080?style=flat)     | 1051(숫자 정사각형)            | [백준 1051 - 숫자 정사각형](https://www.acmicpc.net/problem/1051)             | O    |
 | 6    | ![Gold IV](https://img.shields.io/badge/골드%20IV-FFD700?style=flat)     | 14500(테트로미노)              | [백준 14500 - 테트로미노](https://www.acmicpc.net/problem/14500)              | O    |
 | 7    | ![Silver III](https://img.shields.io/badge/실버%20III-808080?style=flat) | 3085(사탕 게임)                | [백준 3085 - 사탕 게임](https://www.acmicpc.net/problem/3085)                 | O    |
-| 8    | ![Gold V](https://img.shields.io/badge/골드%20V-FFD700?style=flat)       | 17484(문자열 화폐)             | [백준 17484 - 문자열 화폐](https://www.acmicpc.net/problem/17484)             | O    |
+| 8    | ![Silver III](https://img.shields.io/badge/실버%20III-808080?style=flat) | 17484(진우의 달 여행 (Small))  | [백준 17484 - 진우의 달 여행 (Small)](https://www.acmicpc.net/problem/17484)  | O    |
 | 9    | ![Silver III](https://img.shields.io/badge/실버%20III-808080?style=flat) | 7568(덩치)                     | [백준 7568 - 덩치](https://www.acmicpc.net/problem/7568)                      | O    |
-| 10   | ![Silver III](https://img.shields.io/badge/실버%20III-808080?style=flat) | 2529(부등호)                   | [백준 2529 - 부등호](https://www.acmicpc.net/problem/2529)                    | O    |
+| 10   | ![Silver I](https://img.shields.io/badge/실버%20I-808080?style=flat)     | 2529(부등호)                   | [백준 2529 - 부등호](https://www.acmicpc.net/problem/2529)                    | O    |
 | 11   | ![Silver III](https://img.shields.io/badge/실버%20III-808080?style=flat) | 2798(블랙잭)                   | [백준 2798 - 블랙잭](https://www.acmicpc.net/problem/2798)                    | O    |
 | 12   | ![Bronze I](https://img.shields.io/badge/브론즈%20I-8B4513?style=flat)   | 1436(영화감독 숌)              | [백준 1436 - 영화감독 숌](https://www.acmicpc.net/problem/1436)               | O    |
 | 13   | ![Silver IV](https://img.shields.io/badge/실버%20IV-808080?style=flat)   | 6064(카잉 달력)                | [백준 6064 - 카잉 달력](https://www.acmicpc.net/problem/6064)                 | O    |
-| 14   | ![Bronze I](https://img.shields.io/badge/브론즈%20I-8B4513?style=flat)   | 17484(점프 왕 쩰리)            | [백준 17484 - 점프 왕 쩰리](https://www.acmicpc.net/problem/17484)            | O    |
+| 14   | ![Silver IV](https://img.shields.io/badge/실버%20IV-808080?style=flat)   | 1748(수 이어 쓰기)1            | [백준 1748 - 수 이어 쓰기 1](https://www.acmicpc.net/problem/17484)           | O    |
 | 15   | ![Bronze V](https://img.shields.io/badge/브론즈%20V-8B4513?style=flat)   | 19532(수학은 비대면강의입니다) | [백준 19532 - 수학은 비대면강의입니다](https://www.acmicpc.net/problem/19532) | O    |
+| 16   | ![Silver IV](https://img.shields.io/badge/실버%20IV-808080?style=flat)   | 1476(날짜 게산)                | [백준 19532 - 날짜 게산](https://www.acmicpc.net/problem/1476)                | O    |
 
 <br/>
 
@@ -86,7 +87,7 @@
 | 11   | ![Silver I](https://img.shields.io/badge/실버%20I-808080?style=flat)       | 1946(신입 사원)        | [백준 1946 - 신입 사원](https://www.acmicpc.net/problem/1946)        | O    |
 | 12   | ![Silver V](https://img.shields.io/badge/실버%20V-808080?style=flat)       | 19941(햄버거 분배)     | [백준 19941 - 햄버거 분배](https://www.acmicpc.net/problem/19941)    | O    |
 | 13   | ![Gold V](https://img.shields.io/badge/골드%20V-FFD700?style=flat)         | 11000(강의실 배정)     | [백준 11000 - 강의실 배정](https://www.acmicpc.net/problem/11000)    | X    |
-| 14   | ![[Gold IV](https://img.shields.io/badge/골드%20IV-FFD700?style=flat)      | 1715(카드 정렬하기)    | [백준 1715 - 카드 정렬하기](https://www.acmicpc.net/problem/1715)    | X    |
+| 14   | ![Gold IV](https://img.shields.io/badge/골드%20IV-FFD700?style=flat)       | 1715(카드 정렬하기)    | [백준 1715 - 카드 정렬하기](https://www.acmicpc.net/problem/1715)    | X    |
 | 15   | ![Gold IV](https://img.shields.io/badge/골드%20IV-FFD700?style=flat)       | 1339(단어 수학)        | [백준 1339 - 단어 수학](https://www.acmicpc.net/problem/1339)        | X    |
 | 16   | ![Gold V](https://img.shields.io/badge/골드%20V-FFD700?style=flat)         | 1744(수 묶기)          | [백준 1744 - 수 묶기](https://www.acmicpc.net/problem/1744)          | X    |
 | 17   | ![Gold II](https://img.shields.io/badge/골드%20II-FFD700?style=flat)       | 1202(보석 도둑)        | [백준 1202 - 보석 도둑](https://www.acmicpc.net/problem/1202)        | X    |
