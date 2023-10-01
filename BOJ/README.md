@@ -86,7 +86,7 @@
 | 11   | ![Silver I](https://img.shields.io/badge/실버%20I-808080?style=flat)       | 1946(신입 사원)        | [백준 1946 - 신입 사원](https://www.acmicpc.net/problem/1946)        | O    |
 | 12   | ![Silver V](https://img.shields.io/badge/실버%20V-808080?style=flat)       | 19941(햄버거 분배)     | [백준 19941 - 햄버거 분배](https://www.acmicpc.net/problem/19941)    | O    |
 | 13   | ![Gold V](https://img.shields.io/badge/골드%20V-FFD700?style=flat)         | 11000(강의실 배정)     | [백준 11000 - 강의실 배정](https://www.acmicpc.net/problem/11000)    | X    |
-| 14   | ![Silver I](https://img.shields.io/badge/실버%20I-808080?style=flat)       | 1715(카드 정렬하기)    | [백준 1715 - 카드 정렬하기](https://www.acmicpc.net/problem/1715)    | X    |
+| 14   | ![[Gold IV](https://img.shields.io/badge/골드%20IV-FFD700?style=flat)      | 1715(카드 정렬하기)    | [백준 1715 - 카드 정렬하기](https://www.acmicpc.net/problem/1715)    | X    |
 | 15   | ![Gold IV](https://img.shields.io/badge/골드%20IV-FFD700?style=flat)       | 1339(단어 수학)        | [백준 1339 - 단어 수학](https://www.acmicpc.net/problem/1339)        | X    |
 | 16   | ![Gold V](https://img.shields.io/badge/골드%20V-FFD700?style=flat)         | 1744(수 묶기)          | [백준 1744 - 수 묶기](https://www.acmicpc.net/problem/1744)          | X    |
 | 17   | ![Gold II](https://img.shields.io/badge/골드%20II-FFD700?style=flat)       | 1202(보석 도둑)        | [백준 1202 - 보석 도둑](https://www.acmicpc.net/problem/1202)        | X    |
