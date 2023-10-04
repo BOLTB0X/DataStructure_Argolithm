@@ -152,7 +152,7 @@
 
 | 번호 | 티어                                                                     | 문제                                    | 링크                                                                                   | 체크 |
 | ---- | ------------------------------------------------------------------------ | --------------------------------------- | -------------------------------------------------------------------------------------- | ---- |
-| 1    | ![Bronze IV](https://img.shields.io/badge/브론즈%20IV-CD7F32?style=flat) | 1388(바닥 장식)                         | [백준 1388 - 바닥 장식](https://www.acmicpc.net/problem/1388)                          | O    |
+| 1    | ![Silver IV](https://img.shields.io/badge/실버%20IV-808080?style=flat)   | 1388(바닥 장식)                         | [백준 1388 - 바닥 장식](https://www.acmicpc.net/problem/1388)                          | O    |
 | 2    | ![Silver IV](https://img.shields.io/badge/실버%20IV-808080?style=flat)   | 16173(점프왕 쩰리)                      | [백준 16173 - 점프왕 쩰리](https://www.acmicpc.net/problem/16173)                      | O    |
 | 3    | ![Silver III](https://img.shields.io/badge/실버%20III-808080?style=flat) | 1260(DFS와 BFS)                         | [백준 1260 - DFS와 BFS](https://www.acmicpc.net/problem/1260)                          | O    |
 | 4    | ![Silver III](https://img.shields.io/badge/실버%20III-808080?style=flat) | 2606(바이러스)                          | [백준 2606 - 바이러스](https://www.acmicpc.net/problem/2606)                           | O    |
