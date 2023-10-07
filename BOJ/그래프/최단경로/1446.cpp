@@ -3,58 +3,67 @@
 #include <iostream>
 #include <vector>
 #include <queue>
+#define INF 1e9
 
 using namespace std;
-const int MAX = 10001, INF = 1e9;
 
-int N, D;
-vector<pair<int,int>> adj[MAX];
-int dist[MAX];
+vector<pair<int,int>> adj[10001];
 
-int dijkstra(void) {
-  int res = 0;
+int dijkstra(int D, int start) {
+    vector<int> dist(10001, INF);
+    priority_queue<pair<int,int>> pq;
 
-  for (int i = 0; i < MAX; ++i) dist[i] = INF;
-  
-  priority_queue<pair<int,int>> pq;
-  dist[0] = 0;
-  pq.push({0, 0});
+    dist[start] = 0;
+    pq.push({0, start});
 
-  while (!pq.empty()) {
-    int curDist = -pq.top().first;
-    int curNode = pq.top().second;
-    pq.pop();
+    while (!pq.empty())
+    {
+        int curCost = -pq.top().first;
+        int curNode = pq.top().second;
+        pq.pop();
 
-    if (curDist > dist[curNode]) continue;
+        if (curCost > dist[curNode]) continue;
 
-    for (auto& next: adj[curNode]) {
-      int nextDist = next.second;
-      int nextNode = next.first;
+        for (auto& next: adj[curNode])
+        {
+            int nextCost = next.second;
+            int nextNode = next.first;
 
-      if (nextDist + curDist < dist[nextNode]) {
-        dist[nextNode] = nextDist + curDist;
-        pq.push({-dist[nextNode], nextNode});
-      }
+            if (nextCost+curCost >= dist[nextNode]) continue;
+
+            dist[nextNode] = nextCost+curCost;
+            pq.push({-dist[nextNode], nextNode});
+        }
     }
-  }
-  res = dist[D];
-  return res;
+    
+    return dist[D];
+}
+
+int solution(int N, int D) {
+    int answer = 0;
+
+    answer = dijkstra(D, 0);
+    
+    return answer;
 }
 
 int main(void) {
-  cin >> N >> D;
+    int N, D;
 
-  for (int i = 0; i <= D - 1; i++)
-		adj[i].push_back({ i+1, 1 });
+    cin >> N >> D;
+    for (int i = 0; i < D; ++i)
+    {
+        adj[i].push_back({i+1, 1});
+    }
 
-  for (int i = 0; i < N; ++i) {
-    int a, b, c;
-    cin >> a >> b >> c;
+    for (int i = 0; i < N; ++i)
+    {
+        int a, b, c;
+        cin >> a >> b >> c;
 
-    adj[a].push_back({b,c});
-  }
+        adj[a].push_back({b, c});
+    }
 
-  cout << dijkstra();
-
-  return 0;
+    cout << solution(N, D);
+    return 0;
 }
