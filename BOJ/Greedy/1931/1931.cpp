@@ -6,26 +6,22 @@
 
 using namespace std;
 
-int N;
-vector<pair<int,int>> rooms;
-
-bool compare(pair<int, int> a, pair<int, int> b) {
+bool compare(const pair<int,int> a, const pair<int,int> b) {
     if (a.second == b.second) return a.first < b.first;
     return a.second < b.second;
 }
 
-int solution(void)
-{
+int solution(int N, vector<pair<int,int>> rooms) {
     int answer = 1;
+    int cmp = 0;
 
     sort(rooms.begin(), rooms.end(), compare);
-    int cmpEndTime = rooms[0].second;
-
-    for (int i = 1; i < rooms.size(); ++i)
+    cmp = rooms.front().second; // 끝나는 시간
+    for (int i= 1; i < rooms.size(); ++i)
     {
-        if (cmpEndTime <= rooms[i].first) 
+        if (cmp <= rooms[i].first)
         {
-            cmpEndTime = rooms[i].second;
+            cmp = rooms[i].second;
             answer++;
         }
     }
@@ -34,15 +30,22 @@ int solution(void)
 }
 
 int main(void) {
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+
+    int N;
+    vector<pair<int,int>> rooms;
+
     cin >> N;
-    int s, e;
+    rooms = vector<pair<int,int>> (N);
 
     for (int i = 0; i < N; ++i)
     {
-        cin >> s >> e;
-        rooms.push_back({s,e});
+        cin >> rooms[i].first >> rooms[i].second;
     }
 
-    cout << solution();
+    cout << solution(N, rooms);
+
     return 0;
 }

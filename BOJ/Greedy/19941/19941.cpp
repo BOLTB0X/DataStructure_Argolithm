@@ -1,25 +1,34 @@
 // 19941 햄버거 분배
 // https://www.acmicpc.net/problem/19941
 #include <iostream>
-#include <cstring>
+#include <vector>
 
 using namespace std;
 
-int N, K;
-string info;
-int visited[20001];
+int solution(int N, int K, string s) {
+    int answer = 0;
+    vector<int> visited(N, 0);
 
-bool check(int cur) {
-    for (int i = -K; i <=K; ++i) {
-        if (cur + i < 0 || cur + i >= N) continue;
+    for (int i = 0; i < N; ++i)
+    {
+        if (s[i] == 'P')
+        {
+            int flag = 0;
+            for (int j = i-K; j <= i+K; ++j)
+            {
+                if (j >= 0 && j < N && !visited[j] && s[j] == 'H')
+                {
+                    visited[j] = 1;
+                    flag = 1;
+                    break;
+                }
+            }
 
-        if (info[cur+i] == 'H' && !visited[cur + i]) {
-            visited[cur+i] = 1;
-            return true;
+            if (flag) answer++;
         }
     }
 
-    return false;
+    return answer;
 }
 
 int main(void) {
@@ -27,22 +36,13 @@ int main(void) {
     cin.tie(0);
     cout.tie(0);
 
-    cin >> N >> K;
-    cin >> info;
-
-    int answer = 0;
-
-    memset(visited, 0, sizeof(visited));
-
-    for (int i = 0; i < N; ++i)
-    {
-        if (info[i] == 'P' && check(i))
-        {
-           answer++;
-        }
-    }
-
-    cout << answer << '\n';
+    int N, K;
+    string s;
     
+    cin >> N >> K;
+    cin >> s;
+
+    cout <<  solution(N, K, s);
+
     return 0;
 }

@@ -6,24 +6,25 @@
 
 using namespace std;
 
+bool compare(const pair<int,int> a, const pair<int, int> b) {
+    if (a.first == b.first) return a.second < b.second;
+    return a.first < b.first;
+}
+
 int solution(int N, vector<pair<int,int>> aply) {
     int answer = 1;
+    int cmp = 0; // 기준인 넘
+    
+    sort(aply.begin(), aply.end(), compare);
+    cmp = aply.front().second;
 
-// 3 2  1 4  5 5
-// 1 4  2 3  4 1
-// 4 1  3 2  3 2
-// 2 3  4 1  2 3
-// 5 5  5 5  1 4
-
-    sort(aply.begin(), aply.end());
-    int interviewRank = 0;
-
-    for (int i = 1; i < N; ++i)
+    for (int i = 1; i < aply.size(); ++i)
     {
-        if (aply[interviewRank].second > aply[i].second)
+        // 서류는 떨어져도 면접 등수가 높다면
+        if (cmp > aply[i].second)
         {
-            interviewRank = i;
             answer++;
+            cmp = aply[i].second;
         }
     }
 
@@ -34,19 +35,17 @@ int main(void) {
     ios::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
-    int T, N;
 
+    int T, N;
+    vector<pair<int,int>> aply;
     cin >> T;
-    for (int t = 0; t < T; ++t)
+
+    while (T--)
     {
         cin >> N;
-        vector<pair<int,int>> aply;
-        for (int i = 0; i < N; ++i) 
-        {
-            int a, b;
-            cin >> a >> b;
-            aply.push_back({a, b});
-        }
+        aply = vector<pair<int,int>>(N);
+        for (int i = 0; i < N; ++i)
+            cin >> aply[i].first >> aply[i].second;
 
         cout << solution(N, aply) << '\n';
     }

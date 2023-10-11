@@ -1,25 +1,23 @@
 // 5585 거스름돈
 // https://www.acmicpc.net/problem/5585
-#include <iostream>
+#include <cstdio>
 
-using namespace std;
+int main(void) {
+    int moeny, answer = 0;
+    int cointype[6] = {500, 100, 50, 10, 5 ,1};
 
-int main(void)
-{
-    int money, answer = 0;
-    int types[6] = {500, 100, 50, 10, 5, 1};
-
-    cin >> money;
-    
-    money = 1000 - money;
-    for(int& t: types)
+    scanf("%d", &moeny);
+    moeny = 1000 - moeny;
+    for (int& coin: cointype)
     {
-        if (t > money) continue;
-
-        answer += (money / t);
-        money %= t;
+        if (moeny >= coin)
+        {
+            answer += (moeny / coin);
+            moeny %= coin;
+            // 3 1 3
+        }
     }
-    cout << answer;
 
+    printf("%d", answer);
     return 0;
 }
