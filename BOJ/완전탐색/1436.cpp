@@ -1,6 +1,7 @@
 // 1436 영화감독 숌
 // https://www.acmicpc.net/problem/1436
 #include <iostream>
+#include <string>
 
 using namespace std;
 
@@ -13,22 +14,23 @@ bool isSixSixSix(string s) {
 }
 
 int main(void) {
-    int N, cnt = 0, number = 666;
-    string answer;
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+
+    int N, number = 666, cnt = 0;
     cin >> N;
 
     while (1)
     {
-        //cout << cnt << ' ' << number << '\n';
+        //cout << number << ' ' << cnt << '\n';
         if (isSixSixSix(to_string(number))) cnt++;
 
-        if (cnt == N) break;
+        if (N == cnt) break;
         number++;
     }
 
-    answer = to_string(number);
+    cout << to_string(number);
 
-    cout << answer;
-    
     return 0;
 }
