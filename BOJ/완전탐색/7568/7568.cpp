@@ -1,34 +1,53 @@
 // 7568 덩치
 // https://www.acmicpc.net/problem/7568
 #include <iostream>
-
+#include <vector>
+// 실5
 using namespace std;
 
-int N;
-pair<int, int> mens[51];
+void solution(int N, vector<pair<int,int>> info) {
+    vector<int> answer;
+
+    for (int i = 0; i < info.size(); ++i)
+    {
+        pair<int,int> cur = info[i];
+        int cnt = 1;
+        for (int j = 0; j < info.size(); ++j)
+        {
+            if (i == j) continue;
+
+            if (cur.first < info[j].first && cur.second < info[j].second)
+            {
+                cnt++;
+            }
+        }
+        answer.push_back(cnt);
+    }
+
+    for (int a: answer)
+    {
+        cout << a << ' ';
+    }
+    cout << '\n';
+    return;
+}
 
 int main(void) {
-  ios_base::sync_with_stdio(false); 
-  cin.tie(NULL); 
-  cout.tie(NULL);
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
 
-  cin >> N;
-  for (int i = 1; i <= N; ++i) {
-    cin >> mens[i].first >> mens[i].second;
-  }
+    int N;
+    vector<pair<int,int>> info;
 
-  for (int i = 1; i <= N; ++i) {
-    int rank = 1;
-    for (int j = 1; j <= N; ++j) {
-      if (i == j) continue;
-      if ((mens[i].first < mens[j].first) && 
-        (mens[i].second < mens[j].second)) {
-        rank += 1;
-        }
+    cin >> N;
+    info = vector<pair<int,int>> (N);
+    for (int i = 0; i< N; ++i)
+    {
+        cin >> info[i].first >> info[i].second;
     }
-    cout << rank << " ";
-  }
 
-  
-  return 0;
+    solution(N, info);
+
+    return 0;
 }

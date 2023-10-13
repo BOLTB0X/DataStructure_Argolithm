@@ -5,91 +5,88 @@
 
 using namespace std;
 
-string solution(string texts, int N, vector<pair<char, char>> cmds) {
+string solution(string s, int N, vector<pair<char,char>> cmd) {
     string answer = "";
-    vector<char> leftStack;
-    vector<char> rightStack;
+    int flag = 0;
+    vector<char> left;
+    vector<char> right;
 
-    // a b c d y
-    // x
+    // L : a b c d y
+    // R : x
 
-    // x : l
-    // c b a : r
+    // L: y _
+    // R: c b a x 
 
-    // y : l
-    // c b a x : r
 
-    for (auto& t: texts)
+    for (char ch: s) left.push_back(ch);
+
+    for (auto c: cmd)
     {
-        leftStack.push_back(t);
-    }
+        if (c.first == 'P')
+        {
+            left.push_back(c.second);
+        }
 
-    for (auto& cmd: cmds)
-    {
-        if (cmd.first == 'P')
+        else if (c.first == 'L')
         {
-            leftStack.push_back(cmd.second);
-        } else if (cmd.first == 'L')
+            if (left.empty()) continue;
+            
+            right.push_back(left.back());
+            left.pop_back();
+        }
+        else if (c.first == 'D')
         {
-            if (!leftStack.empty())
-            {
-                rightStack.push_back(leftStack.back());
-                leftStack.pop_back();
-            } 
-        } else if (cmd.first == 'D')
+            if (right.empty()) continue;
+
+            left.push_back(right.back());
+            right.pop_back();
+        }
+        else if (c.first == 'B')
         {
-            if (!rightStack.empty())
-            {
-            leftStack.push_back(rightStack.back());
-            rightStack.pop_back();
-            }
-        } else if (cmd.first == 'B')
-        {
-            if (!leftStack.empty())
-            {
-                leftStack.pop_back();
-            }
+            if (left.empty()) continue;
+            left.pop_back();
         }
     }
 
-    for (char& l : leftStack)
+    for (char l: left) answer += l;
+    while (!right.empty())
     {
-        answer += l;
+        answer += right.back();
+        right.pop_back();
     }
-
-    while (!rightStack.empty())
-    {
-        answer += rightStack.back();
-        rightStack.pop_back();
-    }
-
     return answer;
 }
 
 int main(void) {
-    string texts;
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+
+    string input;
     int N;
-    vector<pair<char,char>> cmds;
+    
+    vector<pair<char,char>> cmd;
 
-    cin >> texts;
+    cin >> input;
     cin >> N;
-
+    
+    cmd = vector<pair<char,char>> (N);
     for (int i = 0; i < N; ++i)
     {
-        char a,b;
+        char a, b;
+    
         cin >> a;
-
-        if (a == 'P') 
+        if (a == 'P')
         {
             cin >> b;
-            cmds.push_back({a, b});
+            cmd[i] = {a, b};
         } else 
         {
-            cmds.push_back({a, '1'});
+            cmd[i] = {a, '1'};
         }
     }
 
-    cout << solution(texts, N, cmds);
-    
+    cout << solution(input, N, cmd);
+
     return 0;
 }
