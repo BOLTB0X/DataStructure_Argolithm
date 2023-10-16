@@ -54,6 +54,7 @@
 | Level                                                                 | 문제 이름 | 문제 링크                                                                               | 체크 |
 | --------------------------------------------------------------------- | --------- | --------------------------------------------------------------------------------------- | ---- |
 | ![Level 1](https://img.shields.io/badge/Level-1-lightgray?style=flat) | 추억 점수 | [level 1 - 추억 점수](https://school.programmers.co.kr/learn/courses/30/lessons/176963) | O    |
+| ![Level 1](https://img.shields.io/badge/Level-1-lightgray?style=flat) | 대충 만든 자판 | [level 1 - 대충 만든 자판](https://school.programmers.co.kr/learn/courses/30/lessons/160586) | O    |
 
 <br/>
 
