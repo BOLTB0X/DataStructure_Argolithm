@@ -1,4 +1,4 @@
-// https://school.programmers.co.kr/learn/courses/30/lessons/49993?language=swift
+// https://school.programmers.co.kr/learn/courses/30/lessons/49993
 import Foundation
 
 func solution(_ skill:String, _ skill_trees:[String]) -> Int {

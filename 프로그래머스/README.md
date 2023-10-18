@@ -38,15 +38,18 @@
 
 | Level | 문제 이름 | 문제 링크 | 체크 |
 | ----- | --------- | --------- | ---- |
-
+| ![Level 2](https://img.shields.io/badge/Level-1-lightgray?style=flat) | 가장 큰 정사각형 찾기 | [level 2 - 가장 큰 정사각형 찾기](https://school.programmers.co.kr/learn/courses/30/lessons/12905) | O    |
 <br/>
 
 ## Queue/Stack(큐/스택)
 
 | Level                                                              | 문제 이름     | 문제 링크                                                                                   | 체크 |
 | ------------------------------------------------------------------ | ------------- | ------------------------------------------------------------------------------------------- | ---- |
+| ![Level 1](https://img.shields.io/badge/Level-1-lightgray?style=flat) | 문자열 나누기 | [level 1 - 문자열 나누기](https://school.programmers.co.kr/learn/courses/30/lessons/140108)    | O    |
+| ![Level 2](https://img.shields.io/badge/Level-2-silver?style=flat) | 짝지어 제거하기 | [level 2 - 짝지어 제거하기](https://school.programmers.co.kr/learn/courses/30/lessons/12973) | O    |
 | ![Level 2](https://img.shields.io/badge/Level-2-silver?style=flat) | 과제 진행하기 | [level 2 - 과제 진행하기](https://school.programmers.co.kr/learn/courses/30/lessons/176962) | O    |
-
+| ![Level 2](https://img.shields.io/badge/Level-2-silver?style=flat) | 뒤에 있는 큰 수 찾기 | [level 2 - 뒤에 있는 큰 수 찾기](https://school.programmers.co.kr/learn/courses/30/lessons/154539) | O    |
+| ![Level 2](https://img.shields.io/badge/Level-2-silver?style=flat) | 스킬트리 | [level 2 - 스킬트리](https://school.programmers.co.kr/learn/courses/30/lessons/49993) | O    |
 <br/>
 
 ## Hash(해시)
@@ -55,7 +58,8 @@
 | --------------------------------------------------------------------- | --------- | --------------------------------------------------------------------------------------- | ---- |
 | ![Level 1](https://img.shields.io/badge/Level-1-lightgray?style=flat) | 추억 점수 | [level 1 - 추억 점수](https://school.programmers.co.kr/learn/courses/30/lessons/176963) | O    |
 | ![Level 1](https://img.shields.io/badge/Level-1-lightgray?style=flat) | 대충 만든 자판 | [level 1 - 대충 만든 자판](https://school.programmers.co.kr/learn/courses/30/lessons/160586) | O    |
-
+| ![Level 1](https://img.shields.io/badge/Level-1-lightgray?style=flat) | 숫자 짝꿍 | [level 1 - 숫자 짝꿍](https://school.programmers.co.kr/learn/courses/30/lessons/131128) | O    |
+| ![Level 2](https://img.shields.io/badge/Level-2-silver?style=flat) | 할인 행사 | [level 2 - 할인 행사](https://school.programmers.co.kr/learn/courses/30/lessons/131127) | O    |
 <br/>
 
 ## DFS/BFS(깊이/우선 탐색)
@@ -70,6 +74,7 @@
 
 | Level                                                              | 문제 이름 | 문제 링크                                                                            | 체크 |
 | ------------------------------------------------------------------ | --------- | ------------------------------------------------------------------------------------ | ---- |
+| ![Level 1](https://img.shields.io/badge/Level-1-lightgray?style=flat) | 삼총사 | [level 1 - 삼총사](https://school.programmers.co.kr/learn/courses/30/lessons/131705)    | O    |
 | ![Level 2](https://img.shields.io/badge/Level-2-silver?style=flat) | N-Queen   | [level 2 - N-Queen](https://school.programmers.co.kr/learn/courses/30/lessons/12952) | O    |
 
 <br/>

@@ -1,4 +1,4 @@
-# https://school.programmers.co.kr/learn/courses/30/lessons/133499?language=python3
+# https://school.programmers.co.kr/learn/courses/30/lessons/133499
 def solution(babbling):
     answer = 0
     words = ["aya", "ye", "woo", "ma"]
