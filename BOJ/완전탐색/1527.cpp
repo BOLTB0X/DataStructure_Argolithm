@@ -1,30 +1,33 @@
 // 1527 금민수의 개수
 // https://www.acmicpc.net/problem/1527
 #include <iostream>
-
+#include <string>
+#define LL long long
 using namespace std;
 
-long long res = 0;
+LL A, B, res = 0;
 
-void DFS(long long number1, long long number2, long long cur)
-{
-    if (cur > number2) return;
+void DFS(LL cur) {
+    if (cur > B) return;
+    
+    if (cur >= A && cur <= B) {
+        res++;
+    }
 
-    if (cur >= number1 && cur <= number2) res++;
-
-    DFS(number1, number2, cur*10+4);
-    DFS(number1, number2, cur*10+7);
+    DFS(cur*10+4);
+    DFS(cur*10+7);
     return;
 }
 
 int main(void) {
-    long long A, B;
+    ios:: sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
 
     cin >> A >> B;
-
-    DFS(A, B, 4);
-    DFS(A, B, 7);
-
+    DFS(4);
+    DFS(7);
     cout << res;
+
     return 0;
 }
