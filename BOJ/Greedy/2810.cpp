@@ -5,25 +5,27 @@
 using namespace std;
 
 int main(void) {
-    int N, flag = 0;
-    double answer = 0;
-    string s;
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
 
-    cin >> N;
-    cin >> s;
+    int N, answer;
+    string sit;
 
-    for (char& ch: s)
-    {
-        if (ch == 'S') answer++;
-        else
-        {
-            flag = 1;
-            answer += 0.5;
-        }
+    cin >> N >> sit;
+    int sCnt = 0, lCnt = 0;
+
+    for (char s: sit) {
+        if (s == 'S') sCnt++;
+        else lCnt++;
     }
 
-    if (flag) answer++;
-    cout << (int)answer;
+    answer = sCnt + (lCnt / 2);
+    if (lCnt > 0) {
+        answer += 1;
+    }
+
+    cout << answer;
 
     return 0;
 }
