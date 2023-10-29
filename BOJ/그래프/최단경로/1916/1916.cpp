@@ -8,12 +8,14 @@
 using namespace std;
 
 vector<pair<int,int>> adj[20001];
+vector<int> dist;
 
-int dijkstra(int N, int M, int A, int B) {
-    vector<int> dist(N+1,  INF);
+int dijkstra(int N, int S, int E) {
+    int ret = 0;
     priority_queue<pair<int,int>> pq;
-    dist[A] = 0;
-    pq.push({0, A});
+
+    pq.push({0, S});
+    dist[S] = 0;
 
     while (!pq.empty())
     {
@@ -23,45 +25,39 @@ int dijkstra(int N, int M, int A, int B) {
 
         if (dist[curNode] < curDist) continue;
 
-        for (auto& next: adj[curNode])
-        {
+        for (auto next: adj[curNode]) {
             int nextDist = next.second;
             int nextNode = next.first;
 
-            if (dist[nextNode] <= nextDist+curDist) continue;
+            if (dist[nextNode] <= curDist + nextDist) continue;
 
-            dist[nextNode] = nextDist+curDist;
+            dist[nextNode] = curDist + nextDist;
             pq.push({-dist[nextNode], nextNode});
         }
     }
     
-
-    return dist[B];
-}
-
-int solution(int N, int M, int A, int B) {
-    int answer = 0;
-    answer = dijkstra(N, M , A, B);
-
-    return answer;
+    ret = dist[E];
+    return ret;
 }
 
 int main(void) {
     ios::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
-    
-    int N, M, A, B;
+
+    int N, M, S, E, a, b, c;
 
     cin >> N >> M;
-    int a,b,c;
+    dist = vector<int> (N+1, INF);
     for (int i = 0; i < M; ++i) {
         cin >> a >> b >> c;
+
         adj[a].push_back({b, c});
     }
 
-    cin >> A >> B;
-    cout << solution(N, M, A, B);
+    cin >> S >> E;
+
+    cout << dijkstra(N, S, E);
 
     return 0;
 }
