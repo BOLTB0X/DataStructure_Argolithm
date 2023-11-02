@@ -6,56 +6,39 @@
 
 using namespace std;
 
-bool compare(pair<int, int> a, pair<int, int> b) {
-    return a.first < b.first;
-}
-
-vector<string> split(string st, string separator) {
-    vector<string> tokens;
-    string token;
+int str_To_int(string str) {
+    string tmp1 = str.substr(0, 2);
+    string tmp2 = str.substr(3, 2);
     
-    int idx = st.find(separator);
-    tokens.push_back(st.substr(0, idx));
-    tokens.push_back(st.substr(idx+1));
-    
-    return tokens;
+    return stoi(tmp1) * 60 + stoi(tmp2);
 }
 
 int solution(vector<vector<string>> book_time) {
     int answer = 0;
-    vector<pair<int,int>> room;
-    vector<pair<int,int>> integerTime;
+    vector<vector<int>> book_time_int;
+    vector<int> waitting;
     
-    for (auto& time: book_time)
-    {
-        vector<string> front = split(time[0], ":");
-        vector<string> back = split(time[1], ":");
-        
-        integerTime.push_back({stoi(front[0])*60+stoi(front[1]), stoi(back[0])*60+stoi(back[1])});
+    for (auto book: book_time) {
+        //cout << str_To_int(book[0]) << ' ' << str_To_int(book[1]) << '\n';
+        book_time_int.push_back({str_To_int(book[0]), str_To_int(book[1])});
     }
     
-    sort(integerTime.begin(), integerTime.end(), compare);
+    sort(book_time_int.begin(), book_time_int.end());
+    waitting.push_back(book_time_int[0][1]);
     
-    for (pair<int,int>& t: integerTime)
-    {
-        if (room.empty()) room.push_back(t);
-        else
-        {
-            int flag = 0;
-            for (int i = 0; i < room.size(); ++i)
-            {
-                if (room[i].second + 10 <= t.first) 
-                {
-                    flag = 1;
-                    room[i] = t;
-                    break;
-                }
+    for (int i = 1; i < book_time_int.size(); ++i) {
+        int flag = 0;
+        for (int j = 0; j < waitting.size(); ++j) {
+            if (waitting[j] + 10 <= book_time_int[i][0]) {
+                flag = 1;
+                waitting[j] = book_time_int[i][1];
+                break;
             }
-            
-            if (!flag) room.push_back(t);
         }
+        
+        if (!flag) waitting.push_back(book_time_int[i][1]);
     }
     
-    answer = room.size();
+    answer = waitting.size();
     return answer;
 }
