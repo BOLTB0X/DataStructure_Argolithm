@@ -1,5 +1,4 @@
 // https://school.programmers.co.kr/learn/courses/30/lessons/49993
-#include <iostream>
 #include <string>
 #include <vector>
 #include <queue>
@@ -12,13 +11,13 @@ int solution(string skill, vector<string> skill_trees) {
     
     for (string cur: skill_trees) {
         queue<char> que;
-        int flag = 1; 
+        int flag = 1;
         
         for (char sk: skill) que.push(sk);
         
         for (char c: cur) {
             if (skill.find(c) != string::npos) {
-                if (que.front() == c) {
+                if (c == que.front()) {
                     que.pop();
                 } else {
                     flag = 0;
@@ -29,11 +28,7 @@ int solution(string skill, vector<string> skill_trees) {
             }
         }
         
-        if (flag) 
-        {
-            //cout << cur << '\n';
-            answer++;
-        }
+        if (flag) answer++;
     }
     return answer;
 }
