@@ -1,66 +1,54 @@
 // 2023 KAKAO BLIND RECRUITMENT 이모티콘 할인행사
+// https://school.programmers.co.kr/learn/courses/30/lessons/150368
 import Foundation
 
-var maxCnt:Int = 0
-var maxTotalMoney:Int = 0
-var per:[[Int]] = []
-
 func solution(_ users:[[Int]], _ emoticons:[Int]) -> [Int] {
-    DFS([10,20,30,40], [], emoticons.count, 0) // 중복순열 생성
-    //print(per)
+    var answer: [Int] = [0, 0]
+    var per: [[Int]] = []
+        
+    func permutation(_ discount: [Int], _ p: [Int], _ depth: Int, _ limit: Int) {
+        if limit == depth {
+            per.append(p)
+            return
+        }
+        
+        for d in discount {
+            permutation(discount, p + [d], depth + 1, limit);
+        }
+    }
+    
+    permutation([10, 20, 30, 40], [], 0, emoticons.count);
     
     for p in per {
-        calculateEmoticons(users, emoticons, p)
-    }
-
-    return [maxCnt, maxTotalMoney]
-}
-
-func DFS(_ discount:[Int], _ arr:[Int], _ limit:Int, _ depth:Int) {
-    if limit == depth {
-        per.append(arr)
-        return
-    }
-    
-    for d in discount {
-        DFS(discount, arr + [d], limit, depth+1)
-    }
-    return
-}
-
-func calculateEmoticons(_ users:[[Int]], _ emoticons:[Int], _ per:[Int]) {
-    var cnt:Int = 0
-    var totMoney:Int = 0
-    
-    for user in users {
-        var tot:Int = 0
-        for i in 0..<emoticons.count {
-            if user[0] <= per[i] { 
-                tot += (emoticons[i] - ((emoticons[i] / 100) * per[i]))
-            } 
-
-            if tot >= user[1] {
-                break
+        var plusJoinCount = 0
+        var totalCost = 0
+        
+        for user in users {
+            var cost = 0
+            for i in 0..<emoticons.count {
+                if user[0] <= p[i] {
+                    cost += (emoticons[i] - (emoticons[i] / 100) * p[i])
+                }
+                
+                if user[1] <= cost { // 가입자 발견
+                    break;
+                }
             }
+            
+            if user[1] <= cost {
+                plusJoinCount += 1
+                cost = 0
+            }
+            totalCost += cost
         }
         
-        //print(tot)
-        
-        if tot >= user[1] {
-            cnt += 1
-            tot = 0
+        if answer[0] < plusJoinCount {
+            answer[0] = plusJoinCount
+            answer[1] = totalCost
+        } else if answer[0] == plusJoinCount {
+            answer[1] = max(answer[1], totalCost)
         }
-        totMoney += tot
     }
-    
-    if cnt >= maxCnt {
-        if cnt == maxCnt {
-            maxTotalMoney = max(maxTotalMoney, totMoney)
-        } else {
-            maxTotalMoney = totMoney
-        }
-        maxCnt = cnt
-    }
-    
-    return
+
+    return answer
 }
