@@ -1,5 +1,5 @@
 // 2022 KAKAO TECH INTERNSHIP 성격 유형 검사하기
-iimport Foundation
+import Foundation
 
 func solution(_ survey:[String], _ choices:[Int]) -> String {
     var answer:String = ""
