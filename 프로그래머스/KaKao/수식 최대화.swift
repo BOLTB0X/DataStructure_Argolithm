@@ -1,73 +1,82 @@
 // 2020 카카오 인턴십 수식 최대화
+// https://school.programmers.co.kr/learn/courses/30/lessons/67257
 import Foundation
 
-var perArr:[[String]] = []
+var totalPermutation: [[String]] = []
 
-func solution(_ expression:String) -> Int64 {
-    var answer:Int = 0
-    let numberArr = makeNumberArr(expArr: expression.map { String($0) })
-    //print(numberArr)
-    permutation(arr: ["+", "-", "*"], visited: [false, false, false], per: [], depth: 0)
-    //print(perArr)
-    
-    for per in perArr {
-        print(numberArr)
-    }
-    return Int64(answer)
-}
-
-func makeNumberArr(expArr: [String]) -> [String] {
-    var numberArr:[String] = []
-
-    var tmp:String = ""
-    for e in expArr {
-        if ["+", "-", "*"].contains(e) {
-            numberArr.append(tmp)
-            numberArr.append(e)
-            tmp = ""
-        } else {
-            tmp += e
-        }
-    }
-    
-    if tmp.count > 0 {
-        numberArr.append(tmp)
-    }
-    
-    return numberArr
-}
-
-func permutation(arr:[String], visited:[Bool], per:[String], depth:Int) {
+func permutation(_ arr: [String], _ visited: [Bool], _ per: [String], _ depth: Int) {
     if depth == arr.count {
-        perArr.append(per)
+        if !totalPermutation.contains(per) { totalPermutation.append(per) }
         return
     }
     
-    var visited = visited
-    
     for i in 0..<arr.count {
-        if visited[i] {
-            continue
-        }
+        if visited[i] { continue }
+        
+        var visited = visited
         visited[i] = true
-        permutation(arr:arr, visited: visited ,per: per+[arr[i]], depth: depth+1)
+        permutation(arr, visited, per + [arr[i]], depth + 1)
         visited[i] = false
     }
-    return
 }
 
-func calculateOp(per: [String], numberArr:[String]) -> Int {
-    var ret:Int = 0
-    var numberArr = numberArr
+func expressionSplited(_ expression: String) -> [String] {
+    var ret: [String] = []
+    var tmp: String = ""
     
-    for p in per {
-        var tmp:[String] = []
-        
-        while numberArr.count > 0 {
-            let ele = numberArr.first!
-            number
-        }
+    for e in expression {
+        if e == "+" || e == "-" || e == "*" {
+            ret.append(tmp)
+            ret.append(String(e))
+            tmp = ""
+        } else { tmp.append(e) }
     }
     
+    if ret.count > 0 { ret.append(tmp) }
     return ret
+}
+
+func operatorExp(_ num1: String, _ op: String, _ num2: String) -> String {
+    switch op {
+        case "+":
+        return String(Int(num1)! + Int(num2)!)
+        case "-":
+        return String(Int(num1)! - Int(num2)!)
+        default:
+        return String(Int(num1)! * Int(num2)!)
+    }
+}
+
+func getMaxValue(_ expression: [String] , _ per: [String]) -> Int64 {
+    var expression = expression
+    
+    for p in per {
+        var stack: [String] = []
+        while !expression.isEmpty {
+            let firstExp = expression.removeFirst()
+            if firstExp == p {
+                let tmp = operatorExp(stack.removeLast(), firstExp, expression.removeFirst());
+                stack.append(tmp)
+            } else { stack.append(firstExp) }
+        }
+        expression = stack
+    }
+    //print(expression)
+    
+    return abs(Int64(expression.first!)!)
+}
+
+func solution(_ expression:String) -> Int64 {
+    var answer: Int64 = 0
+    var expression = expressionSplited(expression)
+    permutation(["+", "-", "*"], [false, false, false], [], 0)
+    
+    // print(totalPermutation)
+    // print(expression)
+    
+    for per in totalPermutation {
+        answer = max(answer, getMaxValue(expression, per))
+    }
+    
+    return answer
 }
