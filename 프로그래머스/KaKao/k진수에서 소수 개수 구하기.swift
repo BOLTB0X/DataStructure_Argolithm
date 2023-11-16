@@ -1,56 +1,49 @@
 // 2022 KAKAO BLIND RECRUITMENT k진수에서 소수 개수 구하기
+// https://school.programmers.co.kr/learn/courses/30/lessons/92335
 import Foundation
 
-func solution(_ n:Int, _ k:Int) -> Int {
-    var answer:Int = 0
-    var tmp:String = ""
-    //print(transK(n, k))
-    let newNumber = transK(n, k)
+func getKnumber(_ n: Int, _ k: Int) -> [String] {
+    var ret: [String] = []
+    var number = n
     
-    for (i, value) in newNumber.enumerated() {
-        if value == "0" {
-            if tmp.count == 0 {
-                continue
-            }
-            
-            if isPrime(Int(tmp)!) {
-                answer += 1
-            }
-            tmp = ""
-        } else {
-            tmp += value
-        }
-    }
-    
-    if tmp.count > 0 && isPrime(Int(tmp)!) {
-        answer += 1 
-    }
-    return answer
-}
-
-func transK(_ number: Int, _ k: Int) -> [String] {
-    var ret:[String] = []
-    var number = number
-        
     while number > 0 {
         ret.append(String(number % k))
         number /= k
     }
     
-    //print(ret)
     return ret.reversed()
 }
 
-func isPrime(_ number: Int) -> Bool {
-    if number < 2 {
-        return false
-    }
+func isPrimeNumber(_ number: Int) -> Bool {
+    if number < 2 { return false }
     
-    for i in 2..<Int(sqrt(Double(number)) + 1) {
-        if number % i == 0 {
-            return false
+    for i in 2..<Int(sqrt(Double(number))+1) {
+        if number % i == 0 { return false }
+    }
+    return true
+}
+
+func solution(_ n:Int, _ k:Int) -> Int {
+    var answer: Int = 0
+    let kNumber = getKnumber(n, k)
+    var tmp: String = ""
+    
+    for number in kNumber {
+        if number == "0" {
+            if tmp == "" { continue }
+            
+            if isPrimeNumber(Int(tmp)!) { 
+                answer += 1
+            }
+            tmp = ""
+        } else {
+            tmp += number
         }
     }
     
-    return true
+    if tmp.count > 0 && isPrimeNumber(Int(tmp)!) { 
+        answer += 1
+    }
+    
+    return answer
 }
