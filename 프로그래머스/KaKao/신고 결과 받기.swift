@@ -1,42 +1,36 @@
 // 2022 KAKAO BLIND RECRUITMENT 신고 결과 받기
+// https://school.programmers.co.kr/learn/courses/30/lessons/92334
 import Foundation
 
 func solution(_ id_list:[String], _ report:[String], _ k:Int) -> [Int] {
-    var answer:[Int] = []
-    var attackDic: [String:[String]] = [:]
-    var attackedDic: [String:Int] = [:]
-    var orderDic: [String:Int] = [:]
+    var answer: [Int] = []
+    var orderDic: [String: Set<String>] = [:]
+    var orderedDic: [String : Int] = [:]
     
     for id in id_list {
-        attackDic[id] = []
-        attackedDic[id] = 0
-        orderDic[id] = 0
+        orderDic[id] = []
+        orderedDic[id] = 0
     }
     
-    for r in report {
-        let splitedR = r.components(separatedBy: " ")
+    for info in report {
+        let splitedInfo = info.components(separatedBy: " ")
+        orderDic[splitedInfo[0]]!.insert(splitedInfo[1])
+    }
+    
+    for value in orderDic.values {
+        for v in value { 
+            orderedDic[v]! += 1
+        }
+    } 
+    
+    for id in id_list {
+        var cnt = 0
+        for orderedId in orderDic[id]! {
+            cnt += (orderedDic[orderedId]! >= k ? 1 : 0)
+        }
         
-        if var values = attackDic[splitedR[0]] {
-            if !values.contains(splitedR[1]) {
-                attackDic[splitedR[0]]?.append(splitedR[1])
-                attackedDic[splitedR[1]]? += 1
-            }
-        }
+        answer.append(cnt)
     }
-    //print(attackDic, attackedDic)
-    for (key, value) in attackDic {
-        var cnt:Int = 0
-        for v in value {
-            if attackedDic[v]! >= k {
-                cnt += 1
-            }
-        }
-        orderDic[key] = cnt
-    }
-    //print(orderDic)
     
-    for i in 0..<id_list.count {
-        answer.append(orderDic[id_list[i]]!)
-    }
     return answer
 }

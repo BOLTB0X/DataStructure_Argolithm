@@ -1,49 +1,46 @@
+// 2020 카카오 인턴십 키패드 누르기
 // https://school.programmers.co.kr/learn/courses/30/lessons/67256
 import Foundation
 
-func getDist(_ pos1: (Int, Int), _ pos2: (Int, Int)) -> Int {
-    abs(pos1.0 - pos2.0) + abs(pos1.1 - pos2.1)
-}
-
 func solution(_ numbers:[Int], _ hand:String) -> String {
-    var answer: String = ""
-    var currentL: (Int, Int) = (4, 1)
-    var currentR: (Int, Int) = (4, 3)
-    let pad: [(Int, Int)] = [(4, 2), (1, 1), (1, 2), (1, 3),
-                            (2, 1), (2, 2), (2, 3),
-                            (3, 1), (3, 2), (3, 3)]
+    var answer:String = ""
+    let padPos:[(x:Int, y:Int)] = [(x:4,y:2),(x:1,y:1),(x:1,y:2),(x:1,y:3),
+                                  (x:2,y:1),(x:2,y:2),(x:2,y:3),(x:3,y:1),
+                                  (x:3,y:2),(x:3,y:3)]
     
-    for number in numbers {
-        switch number {
-            case 1, 4, 7:
-            answer += "L"
-            currentL = pad[number]
-            
-            case 3, 6, 9:
-            answer += "R"
-            currentR = pad[number]
-            
-            default:
-            let leftToNum = getDist(pad[number], currentL)
-            let rightToNum = getDist(pad[number], currentR)
-            
-            if leftToNum < rightToNum {
-                answer += "L"
-                currentL = pad[number]
-            } else if leftToNum > rightToNum {
-                answer += "R"
-                currentR = pad[number]
+    var currentLeft:(x:Int, y:Int) = (x:4,y:1) // *
+    var currentRight:(x:Int, y:Int) = (x:4,y:3) // #
+    
+    numbers.forEach { 
+        if $0 == 1 || $0 == 4 || $0 == 7 {
+            answer.append("L")
+            currentLeft = padPos[$0]
+        } else if  $0 == 3 || $0 == 6 || $0 == 9 {
+            answer.append("R")
+            currentRight = padPos[$0]
+        } else {
+            let lDist = calculateDist(currentLeft, padPos[$0])
+            let rDist = calculateDist(currentRight, padPos[$0])
+            if lDist > rDist {
+                answer.append("R")
+                currentRight = padPos[$0]
+            } else if lDist < rDist {
+                answer.append("L")
+                currentLeft = padPos[$0]
             } else {
                 if hand == "left" {
-                    answer += "L"
-                    currentL = pad[number]
+                    answer.append("L")
+                    currentLeft = padPos[$0]
                 } else {
-                    answer += "R"
-                    currentR = pad[number]
+                    answer.append("R")
+                    currentRight = padPos[$0]
                 }
             }
         }
     }
-
     return answer
+}
+
+func calculateDist(_ hand:(x:Int, y:Int), _ number:(x:Int, y:Int)) -> Int {
+    abs(hand.x-number.x) + abs(hand.y-number.y)
 }

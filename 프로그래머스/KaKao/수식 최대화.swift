@@ -1,82 +1,91 @@
 // 2020 카카오 인턴십 수식 최대화
-// https://school.programmers.co.kr/learn/courses/30/lessons/67257
 import Foundation
 
-var totalPermutation: [[String]] = []
+func solution(_ expression:String) -> Int64 {
+    var answer:Int64 = 0
+    let expression = splitNumberAndOp(expression)
+    let priorityCase = permutation(["+","-","*"], 3)
 
-func permutation(_ arr: [String], _ visited: [Bool], _ per: [String], _ depth: Int) {
-    if depth == arr.count {
-        if !totalPermutation.contains(per) { totalPermutation.append(per) }
-        return
+    for per in priorityCase {
+        answer = max(answer, calculateExpression(per, expression))
     }
-    
-    for i in 0..<arr.count {
-        if visited[i] { continue }
-        
-        var visited = visited
-        visited[i] = true
-        permutation(arr, visited, per + [arr[i]], depth + 1)
-        visited[i] = false
-    }
+    return answer
 }
 
-func expressionSplited(_ expression: String) -> [String] {
-    var ret: [String] = []
-    var tmp: String = ""
+func splitNumberAndOp(_ expression:String) -> [String] {
+    var ret:[String] = []
+    var tempString:String = ""
     
-    for e in expression {
-        if e == "+" || e == "-" || e == "*" {
-            ret.append(tmp)
-            ret.append(String(e))
-            tmp = ""
-        } else { tmp.append(e) }
+    for exp in expression {
+        if exp == "+" || exp == "-" || exp == "*" {
+            ret.append(tempString)
+            ret.append(String(exp))
+            tempString = ""
+        } else {
+            tempString.append(exp)
+        }
     }
-    
-    if ret.count > 0 { ret.append(tmp) }
+    ret.append(tempString)
     return ret
 }
 
-func operatorExp(_ num1: String, _ op: String, _ num2: String) -> String {
-    switch op {
-        case "+":
-        return String(Int(num1)! + Int(num2)!)
-        case "-":
-        return String(Int(num1)! - Int(num2)!)
-        default:
-        return String(Int(num1)! * Int(num2)!)
+func permutation(_ n:[Character], _ r: Int) -> [[String]] {
+    var ret:[[String]] = []
+    var visited = Array(repeating: false, count: n.count)
+    
+    func DFS(_ per:[Character], _ depth: Int) {
+        if depth == r {
+            ret.append(per.map { String($0) })
+            return
+        }
+        
+        for i in 0..<n.count {
+            if visited[i] { continue }
+            
+            visited[i] = true
+            DFS(per + [n[i]], depth + 1)
+            visited[i] = false
+        }
     }
+    
+    DFS([], 0)
+    return ret
 }
 
-func getMaxValue(_ expression: [String] , _ per: [String]) -> Int64 {
+func calculateExpression(_ per: [String], _ expression: [String]) -> Int64 {
     var expression = expression
     
+    func operatorExp(_ num1:Int64, _ op:String, _ num2:Int64) -> String {
+        var ret: Int64 = 0
+        switch op {
+            case "+":
+            ret = num1 + num2
+            break
+            case "-":
+            ret = num1 - num2
+            break
+            default:
+            ret = num1 * num2
+            break
+        }
+        
+        return String(ret)
+    }
+    
     for p in per {
-        var stack: [String] = []
+        var stack:[String] = []
         while !expression.isEmpty {
-            let firstExp = expression.removeFirst()
-            if firstExp == p {
-                let tmp = operatorExp(stack.removeLast(), firstExp, expression.removeFirst());
-                stack.append(tmp)
-            } else { stack.append(firstExp) }
+            let front = expression.removeFirst()
+            
+            if front == p {
+                let value = operatorExp(Int64(stack.removeLast())!, front, Int64(expression.removeFirst())!)
+                stack.append(value)
+            } else {
+                stack.append(front)
+            }
         }
         expression = stack
     }
-    //print(expression)
     
     return abs(Int64(expression.first!)!)
-}
-
-func solution(_ expression:String) -> Int64 {
-    var answer: Int64 = 0
-    var expression = expressionSplited(expression)
-    permutation(["+", "-", "*"], [false, false, false], [], 0)
-    
-    // print(totalPermutation)
-    // print(expression)
-    
-    for per in totalPermutation {
-        answer = max(answer, getMaxValue(expression, per))
-    }
-    
-    return answer
 }

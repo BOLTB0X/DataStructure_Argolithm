@@ -1,57 +1,67 @@
 // 2019 KAKAO BLIND RECRUITMENT 후보키
+// https://school.programmers.co.kr/learn/courses/30/lessons/42890
 import Foundation
 
-var comArr:[[Int]] = []
-
 func solution(_ relation:[[String]]) -> Int {
-    var answer:[Set<Int>] = []
+    var answer: Int = 0
+    var candidateKeySet: [Set<Int>] = []
     
     for i in 1...relation[0].count {
-        combination(Array(0..<relation[0].count), [], i, 0, 0)
-    }
-    
-    for com in comArr {
-        var res: Set<String> = makeKey(com, relation) 
+        let currentTotalCase = combination(Array(0..<relation[0].count), i)
         
-        if res.count == relation.count { // 유일성 확인
-            var flag: Bool = true
-            for a in answer { // 최소성 확인
-                if a.isSubset(of: com) {  
-                    flag = false
-                    break
-                }
-            }
-            if flag {
-                answer.append(Set(com))
-            }
+        for selectedCol in currentTotalCase {
+            let candidateKey = makeCandidateKey(relation, selectedCol)
+            
+            // 유일성, 최소성 체크
+            if candidateKey.count != relation.count { continue }
+            
+            if !isMinimality(candidateKeySet, selectedCol) { continue }
+            
+            candidateKeySet.append(Set(selectedCol))
         }
     }
-
-    //print(answer)
-    return answer.count
+    
+    answer = candidateKeySet.count
+    return answer
 }
 
-func combination(_ arr: [Int],  _ com:[Int], _ size: Int, _ cur: Int, _ level: Int){
-    if size == level {
-        comArr.append(com)
-        return
+func combination(_ n: [Int], _ r: Int) -> [[Int]] {
+    var total: [[Int]] = []
+    var visited = Array(repeating: false, count: n.count)
+    
+    func DFS(_ com: [Int], _ cur: Int, _ depth: Int) {
+        if depth == r {
+            total.append(com);
+            return
+        }
+        
+        for i in cur..<n.count {
+            if visited[i] { continue }
+            
+            visited[i] = true
+            DFS(com + [n[i]], i+1, depth+1)
+            visited[i] = false
+        }
     }
     
-    var com = com
-    for i in cur..<arr.count {
-        com.append(i)
-        combination(arr, com, size, i + 1, level+1)
-        com.removeLast()
-    }
+    DFS([], 0, 0)
+    return total
 }
 
-func makeKey(_ com:[Int], _ relation:[[String]]) -> Set<String>{
-    var res: Set<String> = []
-    
-    for row in relation {
-        let key = com.reduce(""){ return $0 + row[$1] }
-        res.insert(key)
+func makeCandidateKey(_ relation: [[String]], _ selectedCol: [Int]) -> Set<String> {
+    var ret: Set<String> = []
+    for r in relation {
+        ret.insert(selectedCol.reduce("") { $0 + r[$1]})
+    }
+    return ret
+}
+
+func isMinimality(_ candidateKeySet: [Set<Int>], _ selectedCol: [Int]) -> Bool {
+    for current in candidateKeySet { // 최소성
+        if current.isSubset(of: selectedCol) {
+            return false
+        }
     }
     
-    return res
+    return true
 }

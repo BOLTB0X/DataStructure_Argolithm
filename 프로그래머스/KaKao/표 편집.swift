@@ -2,91 +2,91 @@
 import Foundation
 
 var stack: [Int] = []
-var table: [(Int, Int)] = []
-var inTable: [Bool] = []
-var cur: Int = 0
 
-func updateTypeU(_ val: Int) {
-    for _ in 0..<val {
-        if table[cur].0 != -1 { 
-            cur = table[cur].0
-        }
+func updateTypeU(_ X:Int, _ table: [(prev: Int, next: Int)], _ k: inout Int) {
+    for _ in 0..<X {
+        if k == 0 { return }
+        k = table[k].prev
     }
-    return
 }
 
-func updateTypeD(_ val: Int) {
-    for _ in 0..<val {
-        if table[cur].1 != -1 { 
-            cur = table[cur].1
-        }
+func updateTypeD(_ X:Int, _ n: Int, _ table: [(prev: Int, next: Int)], _ k: inout Int) {
+    for _ in 0..<X {
+        if k == n-1 { return }
+        k = table[k].next
     }
-    return
 }
 
-func updateTypeC(_ n: Int) {
-    let prev = table[cur].0
-    let next = table[cur].1
-    inTable[cur] = false
-    stack.append(cur)
+func updateTypeC(_ n:Int, table: inout [(prev: Int, next: Int)], inTable: inout [Bool], _ k: inout Int) {
+    let removedPrev = table[k].prev
+    let romovedNext = table[k].next
+    stack.append(k)
+    inTable[k] = false
     
-    if prev != -1 { table[prev].1 = next } 
+    if removedPrev != -1 {
+        table[removedPrev].next = romovedNext
+    }
     
-    if next != -1 { table[next].0 = prev }
+    if romovedNext != -1 {
+        table[romovedNext].prev = removedPrev
+    }
     
-    cur = table[cur].1 == -1 ? table[cur].0 : table[cur].1
-    return
+    k = romovedNext == -1 ? removedPrev : romovedNext
 }
 
-func updateTypeZ() {
-    guard let top = stack.last else { return }
-    stack.removeLast()
+func updateTypeZ(_ n:Int, table: inout [(prev: Int, next: Int)], inTable: inout [Bool], _ k: inout Int) {
+    if stack.isEmpty { return }
+    
+    let top = stack.removeLast()
     inTable[top] = true
     
-    let prev = table[top].0
-    let next = table[top].1
+    let restoredPrev = table[top].prev
+    let restoredNext = table[top].next
     
-    if prev != -1 {
-        table[prev].1 = top
+    if restoredPrev != -1 {
+        table[restoredPrev].next = top
     }
     
-    if next != -1 {
-        table[next].0 = top
+    if restoredNext != -1 {
+        table[restoredNext].prev = top
     }
-}
+} 
 
 func solution(_ n:Int, _ k:Int, _ cmd:[String]) -> String {
-    var answer = ""
-    cur = k
-    inTable = Array(repeating: true, count: n)
+    var answer: String = ""
+    var table: [(prev: Int, next: Int)] = []
+    var k = k
+    var inTable: [Bool] = Array(repeating: true, count: n)
     
     for i in 0..<n {
         if i == n-1 {
-            table.append((i - 1, -1))
+            table.append((i-1, -1))
         } else {
-            table.append((i - 1, i + 1))
+            table.append((i-1, i+1))
         }
     }
+    
     
     for c in cmd {
-        let splitedCmd = c.split(separator: " ").map { String($0)}
-        switch splitedCmd[0] {
+        let splitedC = c.split(separator: " ")
+        switch splitedC[0] {
             case "U":
-                updateTypeU(Int(splitedCmd[1])!)
+            updateTypeU(Int(splitedC[1])!, table, &k)
+            break
             case "D":
-                updateTypeD(Int(splitedCmd[1])!)
+            updateTypeD(Int(splitedC[1])!, n, table, &k)
+            break
             case "C":
-                updateTypeC(n)
-            case "Z":
-                updateTypeZ()
+            updateTypeC(n, table: &table, inTable: &inTable, &k)
+            break
             default:
-                break
+            updateTypeZ(n, table: &table, inTable: &inTable, &k)
+            break
         }
     }
     
-    for i in inTable {
-        answer += i ? "O" : "X"
+    for t in inTable {
+        answer += t ? "O" : "X"
     }
-    
     return answer
 }

@@ -2,53 +2,66 @@
 // https://school.programmers.co.kr/learn/courses/30/lessons/150368
 import Foundation
 
-func solution(_ users:[[Int]], _ emoticons:[Int]) -> [Int] {
-    var answer: [Int] = [0, 0]
-    var per: [[Int]] = []
-        
-    func permutation(_ discount: [Int], _ p: [Int], _ depth: Int, _ limit: Int) {
-        if limit == depth {
-            per.append(p)
+func permutation(_ arr: [Int], _ limit: Int) -> [[Int]] {
+    var ret: [[Int]] = []
+    
+    func DFS(_ per: [Int], _ depth: Int) {
+        if depth == limit {
+            ret.append(per)
             return
         }
-        
-        for d in discount {
-            permutation(discount, p + [d], depth + 1, limit);
+    
+        for i in 0..<arr.count {
+            DFS(per + [arr[i]], depth + 1)
         }
     }
     
-    permutation([10, 20, 30, 40], [], 0, emoticons.count);
+    DFS([], 0)
+    return ret
+}
+
+func getPlusServies(_ discount: [Int], _ users: [[Int]], _ emoticons: [Int]) -> (Int, Int) {
+    var applyCount = 0
+    var totalMoney = 0
     
-    for p in per {
-        var plusJoinCount = 0
-        var totalCost = 0
+    for user in users {
+        var emoticonsTotal = 0
         
-        for user in users {
-            var cost = 0
-            for i in 0..<emoticons.count {
-                if user[0] <= p[i] {
-                    cost += (emoticons[i] - (emoticons[i] / 100) * p[i])
-                }
-                
-                if user[1] <= cost { // 가입자 발견
-                    break;
-                }
+        for i in 0..<emoticons.count {
+            if user[0] <= discount[i] {
+                let prices = emoticons[i] - (emoticons[i] / 100 * discount[i])
+                emoticonsTotal += prices
             }
             
-            if user[1] <= cost {
-                plusJoinCount += 1
-                cost = 0
+            if user[1] <= emoticonsTotal {
+                applyCount += 1
+                emoticonsTotal = 0
+                break
             }
-            totalCost += cost
         }
         
-        if answer[0] < plusJoinCount {
-            answer[0] = plusJoinCount
-            answer[1] = totalCost
-        } else if answer[0] == plusJoinCount {
-            answer[1] = max(answer[1], totalCost)
+        totalMoney += emoticonsTotal
+    }
+    
+    return (applyCount, totalMoney)
+}
+
+func solution(_ users:[[Int]], _ emoticons:[Int]) -> [Int] {
+    var answer: [Int] = [0, 0]
+    let discountPermutation = permutation([10, 20, 30, 40], emoticons.count)
+    
+    for discount in discountPermutation {
+        let result: (applyCount: Int, totalMoney: Int) = getPlusServies(discount, users, emoticons)
+        
+        if  answer[0] <= result.applyCount {
+            if answer[0] < result.applyCount {
+                answer[0] = result.applyCount
+                answer[1] = result.totalMoney
+            } else {
+                answer[1] = max(answer[1], result.totalMoney)
+            }
         }
     }
-
+    
     return answer
 }

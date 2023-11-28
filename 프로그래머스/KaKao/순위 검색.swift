@@ -1,79 +1,80 @@
-// # 2021 KAKAO BLIND RECRUITMENT 순위 검색
+// 2021 KAKAO BLIND RECRUITMENT 순위 검색
+// https://school.programmers.co.kr/learn/courses/30/lessons/72412
 import Foundation
 
 func solution(_ info:[String], _ query:[String]) -> [Int] {
     var answer:[Int] = []
-    var comArr:[[Int]] = []
-    var applyDic:[String:[Int]] = [:]
+    let blockCase = combination([0,1,2,3], 4)
+    let infoDict = createInfoDict(blockCase, info)
     
-    func combination(arr: [Int], com: [Int], r: Int, cur: Int, depth: Int) {
-        if depth == r {
-            comArr.append(com)
-            return
-        }
+    for qry in query {
+        let splitedQry = qry.components(separatedBy: " ")
+        let findKey = "\(splitedQry[0])\(splitedQry[2])\(splitedQry[4])\(splitedQry[6])"
+        let findValue = Int(splitedQry[7])!
         
-        for i in cur..<arr.count {
-            combination(arr: arr, com: com+[arr[i]], r: r, cur: i+1, depth: depth+1)
-        }
-        return
-    }
-    
-    for i in 0..<5 {
-        combination(arr: [0,1,2,3], com:[], r: i, cur: 0, depth: 0)
-    }
-    
-    for com in comArr {
-        for i in info {
-            var splitedI = i.components(separatedBy: " ")
+        if let value = infoDict[findKey] {
+            // 이분탐색
+            var start:Int = 0
+            var end:Int = value.count-1
             
-            for c in com {
-                splitedI[c] = "-"
-            }
-            // print(splitedI)
-            let dicKey = "\(splitedI[0])\(splitedI[1])\(splitedI[2])\(splitedI[3])"
-            let dicVal = Int(splitedI[4])!
-            if let _ = applyDic[dicKey] {
-                applyDic[dicKey]?.append(dicVal)
-            } else {
-                applyDic[dicKey] = [dicVal]
-            }
-        }
-    }
-    
-    //print(applyDic)
-    for key in applyDic.keys {
-        if var valueArr = applyDic[key] {
-            valueArr.sort()
-            applyDic[key] = valueArr
-        }
-    }
-    //print(applyDic)
-    
-    for q in query {
-        let rq = q.components(separatedBy: " ")
-        //print(rq)
-        let findKey = "\(rq[0])\(rq[2])\(rq[4])\(rq[6])"
-        //print(newQ)
-        let findVal = Int(rq[7])!
-        
-        if let valueArr = applyDic[findKey] {
-            // 이분 탐색
-            var low = 0
-            var high = valueArr.count - 1
-            var mid = 0
-
-            while low <= high {
-                mid = (low + high)/2
-                if valueArr[mid] < findVal {
-                    low = mid+1
+            while start <= end {
+                let mid = (start+end)/2
+                
+                if value[mid] < findValue {
+                    start = mid + 1
                 } else {
-                    high = mid-1
+                    end = mid - 1
                 }
             }
-            answer.append(valueArr.count - low)
+            // 1 2 3
+            answer.append(value.count - start)
         } else {
             answer.append(0)
         }
     }
+    
     return answer
+}
+
+func combination(_ n: [Int], _ r: Int) -> [[Int]] {
+    var ret: [[Int]] = []
+    
+    func DFS(_ com:[Int], _ cur:Int, _ depth:Int, _ limit: Int) {
+        if depth == limit {
+            ret.append(com)
+            return
+        }
+        
+        for i in cur..<n.count {
+            DFS(com + [n[i]], i+1, depth + 1, limit)
+        }
+    }
+    
+    for i in 0...r {
+        DFS([], 0, 0, i)
+    }
+    
+    return ret
+}
+
+func createInfoDict(_ blockCase: [[Int]], _ info:[String]) -> [String:[Int]] {
+    var ret: [String:[Int]] = [:]
+    
+    for com in blockCase {
+        for inf in info {
+            var splitedInf = inf.components(separatedBy: " ")
+            
+            com.forEach { c in
+                splitedInf[c] = "-"
+            }
+            
+            ret["\(splitedInf[0])\(splitedInf[1])\(splitedInf[2])\(splitedInf[3])", default: []] += [Int(splitedInf[4])!] 
+        }
+    }
+    
+    for (key, value) in ret {
+        ret[key] = value.sorted()
+    }
+    
+    return ret
 }

@@ -1,68 +1,47 @@
 // 2019 카카오 개발자 겨울 인턴십 튜플
+// https://school.programmers.co.kr/learn/courses/30/lessons/64065
 import Foundation
 
-func transArray(_ s: String) -> [[String]] {
-    var sArr = s.map{ String($0) }
-    var stack: [Int] = []
-    var arr:[[String]] = []
-    var flag = false
-    
-    for i in 0..<sArr.count {
-        if sArr[i] == "{" {
-            flag = true
-            stack.append(i)
-        } else {
-            if flag && sArr[i] == "}" {
-                let lastIdx = i
-                let stratIdx = stack.last!
-                let partArr = Array(sArr[stratIdx...lastIdx])
-                let newArr = partArr.filter { ele in
-                    return Int(ele) != nil || ele == ","
-                }
-                
-                if newArr.contains(",") {
-                    let strArr = newArr.joined()
-                    arr.append(strArr.components(separatedBy: ","))
-                } else {
-                    var tmp:String = ""
-                    for n in newArr {
-                        if n == "{" || n == "}" {
-                            continue
-                        }
-                        tmp += n
-                    }
-                    arr.append([tmp])
-                }
-                
-                flag = false
-                stack.removeLast()
-            } else if !flag && sArr[i] == "}" {
-                stack.removeLast()
-            }
-        }
-    }
-    
-    return arr
-}
-
 func solution(_ s:String) -> [Int] {
-    var answer: [Int] = []
-    var ret = transArray(s)
-    //print(ret)
+    var answer:[Int] = []
+    let s = translateIntArrayFromTuple(s).sorted { $0.count < $1.count }
     
-    let sortedRet = ret.sorted {
-        $0.count < $1.count
-    }
-    //print(sortedRet)
-    
-    for ret in sortedRet {
-        for r in ret {
-            if answer.contains(Int(r)!) {
-                continue
-            }
-            answer.append(Int(r)!)
+    for arr in s {
+        for a in arr {
+            if answer.contains(a) { continue }
+            answer.append(a)
         }
-        
     }
     return answer
+}
+
+func translateIntArrayFromTuple(_ s:String) -> [[Int]] {
+    var ret:[[Int]] = []
+    var s = s
+    var tempArr: [Int] = []
+    var tempString: String = ""
+    var flag: Bool = false
+    
+    s.removeFirst()
+    s.removeLast()
+    
+    s.forEach {
+        if flag {
+            if $0.isNumber {
+                tempString.append($0)
+            } else {
+                tempArr.append(Int(tempString)!)
+                if $0 == "}" {
+                    ret.append(tempArr)
+                    tempArr = []
+                    flag = false
+                }
+                tempString = ""
+            }
+        } else if $0 == "{" {
+            flag = true 
+        }
+    }
+    
+    return ret
 }

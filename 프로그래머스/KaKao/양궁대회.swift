@@ -1,58 +1,60 @@
 // 2022 KAKAO BLIND RECRUITMENT 양궁대회
+// https://school.programmers.co.kr/learn/courses/30/lessons/92342
 import Foundation
 
-var comArr:[[Int]] = []
-
 func solution(_ n:Int, _ info:[Int]) -> [Int] {
-    var answer:[Int] = [-1]
-    var maxDiff:Int = -1
+    var answer: [Int] = [-1]
+    var maxDiff: Int = -1
+    let totalCase = combination(Array(0...10), n)
     
-    combination(arr:[0,1,2,3,4,5,6,7,8,9,10], com:[], r: n, cur:0, depth:0)
-    
-    for com in comArr {
-        var scoreArr = Array(repeating: 0, count: 11)
-        for c in com {
-            scoreArr[10-c] += 1
-        }
+    for arrows in totalCase {
+        let lion = getLionInfo(arrows)
+        let scores: (apeach: Int, lion: Int) = calculateScore(info, lion)
         
-        var lastScore = calculateScore(lion:scoreArr, aporch: info)
-        
-        if lastScore[0] > lastScore[1] && maxDiff < (lastScore[0] - lastScore[1]) {
-            answer = scoreArr
-            maxDiff = lastScore[0] - lastScore[1]
+        if scores.apeach < scores.lion {
+            if maxDiff < scores.lion - scores.apeach {
+                maxDiff = scores.lion - scores.apeach
+                answer = lion
+            }
         }
     }
     return answer
 }
 
-func combination(arr:[Int], com:[Int], r:Int, cur:Int, depth:Int) {
-    if depth == r {
-        var com = com
-        comArr.append(com)
-        return
-    }
+func combination(_ n: [Int], _ r: Int) -> [[Int]] {
+    var ret: [[Int]] = []
     
-    for i in cur..<arr.count {
-        combination(arr: arr, com: com+[arr[i]], r: r, cur:i, depth: depth+1)
-    }
-    return
-}
-
-func calculateScore(lion:[Int], aporch:[Int]) -> [Int] {
-    var lScore:Int = 0
-    var aScore:Int = 0
-    
-    for i in 0..<11 {
-        if lion[i] == 0 && aporch[i] == 0 {
-            continue
+    func DFS(_ com: [Int], _ cur: Int, _ depth: Int) {
+        if depth == r {
+            ret.append(com)
+            return
         }
         
-        if lion[i] > aporch[i] {
-            lScore += (10 - i)
-        } else {
-            aScore += (10 - i)
+        for i in cur..<n.count {            
+            DFS(com + [n[i]], i, depth+1)
         }
     }
     
-    return [lScore, aScore]
+    DFS([], 0, 0)
+    return ret
+}
+
+func getLionInfo(_ arrows: [Int]) -> [Int] {
+    arrows.reduce(into: Array(repeating: 0, count: 11)) { $0[10-$1] += 1 }
+}
+
+func calculateScore(_ apeach: [Int], _ lion: [Int]) -> (Int, Int) {
+    var ret: (Int, Int) = (0, 0)
+    
+    for i in 0...10 {
+        if apeach[i] == 0 && lion[i] == 0 { continue }
+        
+        if apeach[i] < lion[i] {
+            ret.1 += (10-i)
+        } else {
+            ret.0 += (10-i)
+        }
+    }
+    
+    return ret
 }

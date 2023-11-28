@@ -1,71 +1,74 @@
 // 2021 KAKAO BLIND RECRUITMENT 메뉴 리뉴얼
+// https://school.programmers.co.kr/learn/courses/30/lessons/72411
 import Foundation
 
-var comArr:[String] = []
-
-func solution(_ orders:[String], _ course:[Int]) -> [String] {
-    var answer:[String] = []
+func combination(_ arrs: [String], _ r: Int) -> Set<String> {
+    var totalCom: Set<String> = []
     
-    for c in course {
-        comArr = [] 
-        // c만큼 코스요리 결정하기
+    func DFS(arr: [String] , com: [String], cur: Int, depth: Int) {
+        if depth == r {
+            let sortedCom = com.sorted { $0 < $1 }
+            totalCom.insert(sortedCom.joined())
+            return
+        }
+        
+        for i in cur..<arr.count {
+            DFS(arr: arr, com: com + [arr[i]], cur: i+1, depth: depth+1)
+        }
+    }
+    
+    for arr in arrs {
+        DFS(arr: arr.map { String($0) }, com: [], cur: 0, depth: 0)
+    }
+    return totalCom
+}
+
+func getCountCourseDictionary(_ ordersCombination: Set<String>, _ orders:[String]) -> [String: Int] {
+    var courseDict: [String: Int] = [:]
+    
+    for com in ordersCombination {
         for order in orders {
-            let orderArr = order.map {String($0)}
-            //print(orderArr)
-            combination(arr:orderArr, com: [], cur: 0, lim: c, level: 0) // 조합 생성
-        }
-        //print(comArr)
-        var countDic: [String:Int] = [:]
-        
-        for com in comArr {
-            for order in orders {
-                if isAllContains(com, order) {
-                    if let cnt = countDic[com] {
-                        countDic[com] = cnt + 1
-                    } else {
-                        countDic[com] = 1
-                    }
-                }
-            }
-        }
-        
-        //print(countDic)
-        if let maxValue = countDic.values.max() {
-            for (key, value) in countDic {
-                if value == maxValue && value != 1 {
-                    answer.append(key)
-                }
+            if isOrder(com, order) {
+                courseDict[com, default: 0] += 1
             }
         }
     }
-    return answer.sorted()
+    
+    return courseDict
 }
 
-func combination(arr:[String], com:[String], cur: Int, lim: Int, level: Int) {
-    if lim == level {
-        let sortedCom = com.sorted()
-        let strCom = sortedCom.joined()
-        if !comArr.contains(strCom) {
-            comArr.append(strCom)
-        }
-        return
-    }
+func isOrder(_ orderCombination: String, _ currentOrder: String) -> Bool {
+    let orderCombination = orderCombination.map { String ($0) }
+    let currentOrder = currentOrder.map { String($0) }
     
-    for i in cur..<arr.count {
-        combination(arr: arr, com: com + [arr[i]], cur: i+1, lim: lim , level: level + 1)
-    }
-    return
-}
-
-func isAllContains(_ com: String, _ order:String) -> Bool {
-    var arr1 = com.map{String($0)}
-    var arr2 = order.map{String($0)}
-    
-    for a1 in arr1 {
-        if !arr2.contains(a1) {
+    for com in orderCombination {
+        if !currentOrder.contains(com) {
             return false
         }
     }
-    
     return true
+}
+
+func isAddCourse(_ courseDict: [String: Int], _ result: inout [String]) {
+    if let maxCoursCombination = courseDict.values.max() {
+        if maxCoursCombination == 1 { return }
+            
+        for (key, value) in courseDict {
+            if value < maxCoursCombination { continue }
+            result.append(key)
+        }
+    }
+}
+
+func solution(_ orders:[String], _ course:[Int]) -> [String] {
+    var answer: [String] = []
+    
+    for currentCourse in course {
+        let ordersCombination = combination(orders, currentCourse)
+        let courseDict = getCountCourseDictionary(ordersCombination, orders)
+        isAddCourse(courseDict, &answer)
+    }
+    
+    answer.sort { $0 < $1 }
+    return answer
 }
