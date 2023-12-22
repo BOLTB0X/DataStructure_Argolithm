@@ -5,8 +5,7 @@
 
 using namespace std;
 
-int N, M;
-vector<int> nodes;
+int nodes[1000001];
 
 int Find(int x) {
     if (nodes[x] != x) nodes[x] = Find(nodes[x]);
@@ -19,7 +18,6 @@ void Union(int a, int b) {
 
     if (a < b) nodes[b] = a;
     else nodes[a] = b;
-
     return;
 }
 
@@ -28,24 +26,23 @@ int main(void) {
     cin.tie(0);
     cout.tie(0);
 
-    int a, b, c;
-
+    int N, M;
+    
     cin >> N >> M;
-
-    nodes.push_back(0);
-    for (int i = 0; i < N; ++i) {
-        nodes.push_back(i+1);
-    }
-
+    for (int i = 1; i <= N; ++i) nodes[i] = i;
     for (int i = 0; i < M; ++i) {
-        cin >> a >> b >> c;
+        int c, a, b;
+        
+        cin >> c >> a >> b;
 
-        if (a == 0)
-        {
-            Union(b, c);
+        if (c == 0) {
+            Union(a, b);
         } else {
-            if (Find(b) == Find(c)) cout << "YES" << '\n';
-            else cout << "NO" << '\n';
+            if (Find(a) == Find(b)) {
+                cout << "YES\n";
+            } else {
+                cout << "NO\n";
+            }
         }
     }
 
