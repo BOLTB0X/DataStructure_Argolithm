@@ -1,15 +1,17 @@
 # https://school.programmers.co.kr/learn/courses/30/lessons/178871
 def solution(players, callings):
-    answer = players
-    # 선수 : 등수
-    curRanking = { b : a for a, b in enumerate(players)}
-    #print(curRanking)
-    for c in callings:
-        curIdx = curRanking[c] # 현재 불린 선수 위치
-        
-        curRanking[answer[curIdx]] -= 1
-        curRanking[answer[curIdx-1]] += 1 # 등수 바꿔주고
-        
-        answer[curIdx], answer[curIdx-1] = answer[curIdx-1], answer[curIdx]
+    players_dic = {val: idx for idx, val in enumerate(players)}
 
+    for call in callings:
+        cur = players_dic[call]
+        curPlayer = call  # 호명 받은 선수
+        front = cur-1
+        frontPlayer = players[front]  # 호명 받은 선수 앞 선수
+
+        players_dic[curPlayer] = front
+        players_dic[frontPlayer] = cur
+
+        players[cur], players[front] = players[front], players[cur]
+
+    answer = sorted(players_dic, key=lambda k: players_dic[k])
     return answer
