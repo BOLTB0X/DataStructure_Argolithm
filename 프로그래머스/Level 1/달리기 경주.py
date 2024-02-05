@@ -1,4 +1,5 @@
 # https://school.programmers.co.kr/learn/courses/30/lessons/178871
+
 def solution(players, callings):
     players_dic = {val: idx for idx, val in enumerate(players)}
 
