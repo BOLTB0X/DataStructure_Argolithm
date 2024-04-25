@@ -2,84 +2,79 @@
 import Foundation
 
 func solution(_ board:[String]) -> Int {
-    var answer:Int = -1
-    var boardMap: [[String]] = []
+    let board = board.map { Array($0) }
+    let pos = findPosition(board)
     
-    func inRange(_ row: Int, _ col: Int, _ cx:Int, _ cy: Int) -> Bool {
-        return cx >= 0 && cy >= 0 && cx < row && cy < col
-    }
+    return BFS(board, pos[0], pos[1])
+}
+
+func findPosition(_ board: [[Character]]) -> [(Int, Int)] {
+    var ret = [(0, 0), (0, 0)]
     
-    func BFS(_ row: Int, _ col: Int, _ startX: Int, _ startY: Int, _ endX: Int, _ endY: Int) {
-        var que:[[Int]] = []
-        var dist = Array(repeating: Array(repeating: 0, count: boardMap[0].count), count: boardMap.count)
-        
-        let dir:[[Int]] = [[-1, 0], [1, 0], [0, -1], [0, 1]]
-        
-        que.append([startX, startY])
-        dist[startX][startY] = 1
-        
-        while !que.isEmpty {
-            let cur = que.removeFirst()
-            var cx = cur[0]
-            var cy = cur[1]
-            
-            if cx == endX && cy == endY {
-                answer = dist[cx][cy]-1
-                break
-            }
-            
-            for d in dir {
-                var nx = cx
-                var ny = cy
-                
-                while true {
-                    nx += d[0]
-                    ny += d[1]
-                    
-                    if !inRange(row, col, nx, ny) {
-                        nx -= d[0]
-                        ny -= d[1]
-                        break
-                    }
-                    
-                    if boardMap[nx][ny] == "D" {
-                        nx -= d[0]
-                        ny -= d[1]
-                        break
-                    }
-                }
-                
-                if dist[nx][ny] == 0 {
-                    dist[nx][ny] = dist[cx][cy] + 1
-                    que.append([nx,ny])
-                }
-            }
-            
-        }
-        return
-    }
-    
-    for b in board {
-        let splitedB = b.map{String($0)}
-        boardMap.append(splitedB)
-    }
-    
-    var start:[Int] = []
-    var end:[Int] = []
-    
-    for i in 0..<boardMap.count {
-        for j in 0..<boardMap[0].count {
-            if boardMap[i][j] == "R" {
-                start.append(i)
-                start.append(j)
-            } else if boardMap[i][j] == "G" {
-                end.append(i)
-                end.append(j)
+    for i in board.indices {
+        for j in board[i].indices {
+            if board[i][j] == "R" {
+                ret[0] = (i , j)
+            } else if board[i][j] == "G" {
+                ret[1] = (i, j)
             }
         }
     }
     
-    BFS(boardMap.count, boardMap[0].count, start[0], start[1], end[0], end[1])
+    return ret
+}
+
+func inRange(_ x: Int, _ y: Int, _ r: Int, _ c: Int) -> Bool {
+    return x >= 0 && y >= 0 && x < r && y < c
+}
+
+func BFS(_ board: [[Character]], _ start: (Int, Int), _ end: (Int, Int)) -> Int {
+    var ret: Int = -1
+    var board: [[Character]] = board
+    var que: [(Int, Int)] = [(start.0, start.1)]
+    var dist = Array(repeating: Array(repeating: 0, count: board[0].count), count: board.count)
     
-    return answer
+    let dx = [-1, 1, 0, 0]
+    let dy = [0, 0, -1, 1]
+    let row = board.count, col = board[0].count
+    
+    dist[start.0][start.1] = 1
+    
+    while !que.isEmpty {
+        let cur = que.removeFirst()
+        
+        if cur.0 == end.0 && cur.1 == end.1 {
+            ret = dist[cur.0][cur.1] - 1
+            break
+        }
+        
+        for i in 0..<4 {
+            var nx = cur.0
+            var ny = cur.1
+            
+            while true {
+                nx += dx[i]
+                ny += dy[i]
+                
+                if !inRange(nx, ny, row, col) { 
+                    nx -= dx[i]
+                    ny -= dy[i]
+                    break 
+                }
+                
+                if board[nx][ny] == "D" {
+                    nx -= dx[i]
+                    ny -= dy[i]
+                    break 
+                }
+            }
+            
+            if dist[nx][ny] == 0 {
+                dist[nx][ny] = dist[cur.0][cur.1] + 1
+                que.append((nx, ny))
+            }
+        }
+    }
+    
+    return ret
 }
