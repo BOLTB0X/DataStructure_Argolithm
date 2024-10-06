@@ -16,7 +16,7 @@
 - [BOJ](https://github.com/BOLTB0X/DataStructure_Argolithm/tree/main/BOJ)
   <br/>
 
-- [Argolithm](https://github.com/BOLTB0X/DataStructure_Argolithm/tree/main/Argolithm)
+- [Algorithm](https://github.com/BOLTB0X/DataStructure_Argolithm/tree/main/Argolithm)
   <br/>
 
 ---
