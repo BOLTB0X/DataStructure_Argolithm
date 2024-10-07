@@ -85,8 +85,12 @@ _F(n) = F(n-1) + F(n-2) (n ≥ 2)_
 
   _아래 그림 처럼 메서드 호출을 나타내면_
 
-  중복되는 연산이 많고 시간 복잡도는 지수 함수가 되어버림
-  <br/>
+<div style="text-align: center;">
+<img src="https://github.com/BOLTB0X/DataStructure-Algorithm/blob/main/Algorithm/DP/%ED%94%BC%EB%B3%B4%EB%82%98%EC%B9%98.png?raw=true" alt="Example Image" width="70%">
+</div>
+
+중복되는 연산이 많고 시간 복잡도는 지수 함수가 되어버림
+<br/>
 
 - **Bottom-Up**
 
