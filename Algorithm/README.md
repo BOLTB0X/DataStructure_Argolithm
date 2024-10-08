@@ -14,6 +14,6 @@
 > 어떤 입력을 받아서 원하는 출력을 내기 위해 거쳐야 할 일련의 과정이나 규칙
 
 - [Dynamic Programming](https://github.com/BOLTB0X/DataStructure-Algorithm/blob/main/Algorithm/DP/READMD.md)
-- [Binary Search]()
-  - [Lowe Bound]()
-  - [Upper Bound]()
+- [Binary Search](https://github.com/BOLTB0X/DataStructure-Algorithm/tree/main/Algorithm/BinarySearch)
+  - [Lowe Bound & Upper Bound](https://github.com/BOLTB0X/DataStructure-Algorithm/tree/main/Algorithm/LowerUpper%20Bound)
+  - [Parametric Search](https://github.com/BOLTB0X/DataStructure-Algorithm/tree/main/Algorithm/Parametric%20Search)

@@ -38,6 +38,23 @@ func lowerBound(_ arr: [Int], _ target: Int) -> Int {
      <br/>
 
 - 예시
+  arr = [1, 2, 2, 2, 3, 5, 7], target = 2
+
+  <div style="text-align: center;">
+  <img src="https://github.com/BOLTB0X/DataStructure-Algorithm/blob/main/Algorithm/LowerUpper%20Bound/png/%EB%A1%9C%EC%9A%B0%ED%95%98%EC%9D%B4%EB%B0%94%EC%9A%B4%EB%93%9C1.png?raw=true" alt="Example Image" width="70%">
+
+  <img src="https://github.com/BOLTB0X/DataStructure-Algorithm/blob/main/Algorithm/LowerUpper%20Bound/png/%EB%A1%9C%EC%9A%B0%ED%95%98%EC%9D%B4%EB%B0%94%EC%9A%B4%EB%93%9C2.png?raw=true" alt="Example Image" width="70%">
+
+  <img src="https://github.com/BOLTB0X/DataStructure-Algorithm/blob/main/Algorithm/LowerUpper%20Bound/png/%EB%A1%9C%EC%9A%B0%EB%B0%94%EC%9A%B4%EB%93%9C4.png?raw=true" alt="Example Image" width="70%">
+
+  <img src="https://github.com/BOLTB0X/DataStructure-Algorithm/blob/main/Algorithm/LowerUpper%20Bound/png/%EB%A1%9C%EC%9A%B0%EB%B0%94%EC%9A%B4%EB%93%9C5.png?raw=true" alt="Example Image" width="70%">
+  </div>
+  <br/>
+
+  ```swift
+  print(lowerBound(arr, 2)) // 1
+  ```
+
   <br/>
 
 - 시간복잡도
@@ -80,7 +97,23 @@ func upperBound(_ arr: [Int], _ target: Int) -> Int {
      <br/>
 
 - 예시
-  <br/>
+  arr = [1, 2, 2, 2, 3, 5, 7], target = 2
+
+    <div style="text-align: center;">
+    <img src="https://github.com/BOLTB0X/DataStructure-Algorithm/blob/main/Algorithm/LowerUpper%20Bound/png/%EB%A1%9C%EC%9A%B0%ED%95%98%EC%9D%B4%EB%B0%94%EC%9A%B4%EB%93%9C1.png?raw=true" alt="Example Image" width="70%">
+
+    <img src="https://github.com/BOLTB0X/DataStructure-Algorithm/blob/main/Algorithm/LowerUpper%20Bound/png/%EB%A1%9C%EC%9A%B0%ED%95%98%EC%9D%B4%EB%B0%94%EC%9A%B4%EB%93%9C2.png?raw=true" alt="Example Image" width="70%">
+
+    <img src="https://github.com/BOLTB0X/DataStructure-Algorithm/blob/main/Algorithm/LowerUpper%20Bound/png/%ED%95%98%EC%9D%B4%EB%B0%94%EC%9A%B4%EB%93%9C3.png?raw=true" alt="Example Image" width="70%">
+
+    <img src="https://github.com/BOLTB0X/DataStructure-Algorithm/blob/main/Algorithm/LowerUpper%20Bound/png/%ED%95%98%EC%9D%B4%EB%B0%94%EC%9A%B4%EB%93%9C4.png?raw=true" alt="Example Image" width="70%">
+  </div>
+
+  ```swift
+  print(upperBound(arr, 2)) // 4
+  ```
+
+    <br/>
 
 - 시간복잡도
   ```
