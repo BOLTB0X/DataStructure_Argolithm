@@ -6,7 +6,7 @@
 
 > 데이터를 저장하고 관리하는 형태와 방법
 
-- [Stack]()
+- [Stack](https://github.com/BOLTB0X/DataStructure-Algorithm/tree/main/Algorithm/Stack#readme)
 - [Queue]()
 
 ## Algorithm
